@@ -31,12 +31,16 @@ public class LoginController implements Initializable {
     @FXML
    public void LoginAction(ActionEvent event) throws IOException{
         
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
+    Parent root = loader.load();
+    ProductosController controller = loader.getController();
+
+    Scene scene  = new Scene(root);
+    Stage newStage = new Stage();
+    newStage.setScene(scene);
+    newStage.setTitle("Productos");
+    newStage.show();
+    stage.close();
             
     }
     
