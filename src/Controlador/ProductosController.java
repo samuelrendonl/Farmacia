@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 
 public class ProductosController implements Initializable {
     
+    public Stage stage;
+    
     @FXML
     Button btnHome; 
     @FXML
@@ -80,7 +82,18 @@ public class ProductosController implements Initializable {
     }
     @FXML
     void NextPageAction(ActionEvent event) throws IOException{
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/prodcutos2.fxml"));
+    Parent root = loader.load();
+    Productos2Controller controller = loader.getController();
 
+    Scene scene  = new Scene(root);
+    Stage newStage = new Stage();
+    newStage.setScene(scene);
+    newStage.setTitle("Productos 2");
+    newStage.show();
+
+    // Cerrar la ventana de login
+    stage.close();
     }
 
 
