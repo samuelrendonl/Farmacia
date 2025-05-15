@@ -36,8 +36,15 @@ public class LoginController implements Initializable {
     @FXML
    public void LoginAction(ActionEvent event) throws IOException{
 
-    String usuarioIngresado = txtUsuario.getText();
+String usuarioIngresado = txtUsuario.getText();
     String contraseñaIngresada = txtContraseña.getText();
+
+    // Validación de campos vacíos
+    if (usuarioIngresado.isEmpty() || contraseñaIngresada.isEmpty()) {
+        mostrarError("Los campos de Usuario y Contraseña no pueden estar vacíos.");
+        txtUsuario.requestFocus();
+        return;  
+    }
 
     boolean credencialesValidas = usuariosRegistrados.stream().anyMatch(u ->
         u.getNombre().equals(usuarioIngresado) &&
@@ -54,6 +61,7 @@ public class LoginController implements Initializable {
         currentStage.setTitle("Productos");
     } else {
         mostrarError("Usuario o contraseña incorrectos. Inténtalo de nuevo.");
+        txtUsuario.requestFocus();
     }
  
     }
@@ -77,10 +85,14 @@ private void mostrarError(String mensaje) {
     usuariosRegistrados.add(new UsuarioCreado("samuel.rendonl", "rendonlsamuel"));
     usuariosRegistrados.add(new UsuarioCreado("johan.castroa", "castroajohan"));
     usuariosRegistrados.add(new UsuarioCreado("samuel.calderon", "calderonsamuel"));  
-        
+       
+          
+          
     }    
+    
 
-    void setStage(Stage primaryStage) {
+
+    public void setStage(Stage primaryStage) {
         stage = primaryStage;
     }
     
