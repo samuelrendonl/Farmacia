@@ -46,8 +46,8 @@ public class LoginController implements Initializable {
     String contraseñaIngresada = txtContraseña.getText();
 
     // Datos "registrados" de ejemplo
-    String usuarioValido = "admin";
-    String contraseñaValida = "1234";
+    String usuarioValido = "ccrAdmin";
+    String contraseñaValida = "ccrfarmaceutica";
 
     if (usuarioIngresado.equals(usuarioValido) && contraseñaIngresada.equals(contraseñaValida)) {
         // Usuario válido, abrir Productos.fxml
@@ -57,8 +57,19 @@ public class LoginController implements Initializable {
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
         currentStage.setTitle("Productos");
-    } 
+    }else {
+        // Usuario incorrecto
+        mostrarError("Usuario o contraseña incorrectos. Inténtalo de nuevo.");
     }
+ 
+    }
+   private void mostrarError(String mensaje) {
+    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+    alert.setTitle("Error de inicio de sesión");
+    alert.setHeaderText(null);
+    alert.setContentText(mensaje);
+    alert.showAndWait();
+}
     
 
 
