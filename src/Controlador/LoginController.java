@@ -39,11 +39,21 @@ public class LoginController implements Initializable {
 String usuarioIngresado = txtUsuario.getText();
     String contraseñaIngresada = txtContraseña.getText();
 
-    // Validación de campos vacíos
-    if (usuarioIngresado.isEmpty() || contraseñaIngresada.isEmpty()) {
-        mostrarError("Los campos de Usuario y Contraseña no pueden estar vacíos.");
+
+    // Validacion de los campos 
+    if (usuarioIngresado.isEmpty() && contraseñaIngresada.isEmpty()) {
+        mostrarError("Los campos de usuario y contraseña no pueden estar vacíos. ");
+        return;
+            // Validación de campo de usuario
+    } else if (usuarioIngresado.isEmpty()) {
+        mostrarError("El campo de usuario está vacío. Ingresa tu nombre de usuario.");
         txtUsuario.requestFocus();
-        return;  
+        return;
+        // Validación de campo de Contraseña
+    } else if (contraseñaIngresada.isEmpty()) {
+        mostrarError("El campo de contraseña está vacío. Ingresa tu contraseña.");
+        txtContraseña.requestFocus();
+        return;
     }
 
     boolean credencialesValidas = usuariosRegistrados.stream().anyMatch(u ->
@@ -52,7 +62,7 @@ String usuarioIngresado = txtUsuario.getText();
     );
 
     if (credencialesValidas) {
-        // Acceso correcto → cambiar escena
+        // Acceso correcto, cambiar escena
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
         Parent root = loader.load();
 
@@ -60,6 +70,7 @@ String usuarioIngresado = txtUsuario.getText();
         currentStage.setScene(new Scene(root));
         currentStage.setTitle("Productos");
     } else {
+        //Credenciales no validas 
         mostrarError("Usuario o contraseña incorrectos. Inténtalo de nuevo.");
         txtUsuario.requestFocus();
     }
