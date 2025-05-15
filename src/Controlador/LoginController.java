@@ -30,7 +30,7 @@ public class LoginController implements Initializable {
     
     @FXML
    public void LoginAction(ActionEvent event) throws IOException{
-
+/*
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
     Parent root = loader.load();
     
@@ -41,10 +41,26 @@ public class LoginController implements Initializable {
     currentStage.setScene(new Scene(root));
     currentStage.setTitle("Productos ");
     currentStage.show();
-    
-    
+  */
+     String usuarioIngresado = txtUsuario.getText();
+    String contraseñaIngresada = txtContraseña.getText();
+
+    // Datos "registrados" de ejemplo
+    String usuarioValido = "admin";
+    String contraseñaValida = "1234";
+
+    if (usuarioIngresado.equals(usuarioValido) && contraseñaIngresada.equals(contraseñaValida)) {
+        // Usuario válido, abrir Productos.fxml
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Productos");
+    } 
     }
     
+
 
 
     

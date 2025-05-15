@@ -19,79 +19,77 @@ public class ProductosController implements Initializable {
     public Stage stage ;
     
     @FXML
-    Button btnHome; 
-    @FXML
-    Button btnMenu; 
-    @FXML
-    Button btnSulfaferrotab; 
-    @FXML
-    Button btnSulfaferrojar1; 
-    @FXML
-    Button btnbetametasona; 
-    @FXML
-    Button btnEsomeprazol; 
-    @FXML
-    Button btnMetocarbamol; 
-    @FXML
-    Button btnNaproxeno; 
-    @FXML
-    Button btnLoratadina; 
-    @FXML
-    Button btnAdrenalina; 
-    @FXML
-    Button btnNextPage; 
-
-    @FXML
+    Button btnHome;
+       @FXML
        public  void HomeAction(ActionEvent event) throws IOException{
 
     }
     @FXML
+    Button btnMenu; 
+       @FXML
        public  void MenuAction(ActionEvent event) throws IOException{
     }
     @FXML
+    Button btnSulfaferrotab;
+       @FXML
     public void SulfaferrotabAction(ActionEvent event) throws IOException{
     }
-    
     @FXML
+    Button btnSulfaferrojar1;
+        @FXML
        public  void SulfaferrojarAction(ActionEvent event) throws IOException{
    
        }
     @FXML
+    Button btnbetametasona; 
+        @FXML
        public  void BetametasonaAction(ActionEvent event) throws IOException{
   
 
     }
     @FXML
+    Button btnEsomeprazol; 
+        @FXML
         public void EsomeprazolAction(ActionEvent event) throws IOException{
 
 
     }
     @FXML
+    Button btnMetocarbamol; 
+        @FXML
         public void MetocarbamolAction(ActionEvent event) throws IOException{
 
     }
     @FXML
+    Button btnNaproxeno; 
+        @FXML
        public  void NaproxenoAction(ActionEvent event) throws IOException{
 
 
     }
     @FXML
+    Button btnLoratadina; 
+        @FXML
     public void LoratadinaAction(ActionEvent event) throws IOException{
 
 
     }
     @FXML
+    Button btnAdrenalina;
+    
+    @FXML
     public void AdrenalinaAction(ActionEvent event) throws IOException{
 
     }
+    @FXML
+    Button btnNextPage; 
+    
     @FXML
     public void NextPageAction(ActionEvent event) throws IOException{
         
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
     Parent root = loader.load();
-
     Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-
     currentStage.setScene(new Scene(root));
     currentStage.setTitle("Productos 2");
   
