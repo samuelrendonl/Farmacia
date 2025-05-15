@@ -12,12 +12,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import java.util.HashMap;
+import java.util.Map;
+import Modelo.UsuarioCreado;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LoginController implements Initializable {
 
     public Stage stage ;
+    private List<UsuarioCreado> usuariosRegistrados = new ArrayList<>();
     
     @FXML
     PasswordField txtContraseña;
@@ -30,46 +35,35 @@ public class LoginController implements Initializable {
     
     @FXML
    public void LoginAction(ActionEvent event) throws IOException{
-/*
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
-    Parent root = loader.load();
-    
-    // Obtener la ventana actual
-    Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
 
-    // Reemplazar el contenido (la escena) de la misma ventana
-    currentStage.setScene(new Scene(root));
-    currentStage.setTitle("Productos ");
-    currentStage.show();
-  */
-     String usuarioIngresado = txtUsuario.getText();
+    String usuarioIngresado = txtUsuario.getText();
     String contraseñaIngresada = txtContraseña.getText();
 
-    // Datos "registrados" de ejemplo
-    String usuarioValido = "ccrAdmin";
-    String contraseñaValida = "ccrfarmaceutica";
+    boolean credencialesValidas = usuariosRegistrados.stream().anyMatch(u ->
+        u.getNombre().equals(usuarioIngresado) &&
+        u.getContraseña().equals(contraseñaIngresada)
+    );
 
-    if (usuarioIngresado.equals(usuarioValido) && contraseñaIngresada.equals(contraseñaValida)) {
-        // Usuario válido, abrir Productos.fxml
+    if (credencialesValidas) {
+        // Acceso correcto → cambiar escena
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
         currentStage.setTitle("Productos");
-    }else {
-        // Usuario incorrecto
+    } else {
         mostrarError("Usuario o contraseña incorrectos. Inténtalo de nuevo.");
     }
  
     }
-   private void mostrarError(String mensaje) {
+private void mostrarError(String mensaje) {
     javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
     alert.setTitle("Error de inicio de sesión");
     alert.setHeaderText(null);
     alert.setContentText(mensaje);
     alert.showAndWait();
-}
+}   
     
 
 
@@ -79,6 +73,11 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+          // Registro de usuarios válidos
+    usuariosRegistrados.add(new UsuarioCreado("samuel.rendonl", "rendonlsamuel"));
+    usuariosRegistrados.add(new UsuarioCreado("johan.castroa", "castroajohan"));
+    usuariosRegistrados.add(new UsuarioCreado("samuel.calderon", "calderonsamuel"));  
+        
     }    
 
     void setStage(Stage primaryStage) {
