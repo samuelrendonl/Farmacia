@@ -34,7 +34,6 @@ public class LoginController implements Initializable {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
     Parent root = loader.load();
     ProductosController controller = loader.getController();
-
     Scene scene  = new Scene(root);
     Stage newStage = new Stage();
     newStage.setScene(scene);

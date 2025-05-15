@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -81,20 +82,50 @@ public class ProductosController implements Initializable {
 
     }
     @FXML
-    void NextPageAction(ActionEvent event) throws IOException{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/prodcutos2.fxml"));
-    Parent root = loader.load();
-    Productos2Controller controller = loader.getController();
+    public void NextPageAction(ActionEvent event) throws IOException{
+    // Cargar el archivo FXML de Productos2
+FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
+Parent root = loader.load();
+Productos2Controller controller = loader.getController();
 
-    Scene scene  = new Scene(root);
+    // Crear una nueva escena y etapa
+    Scene scene = new Scene(root);
     Stage newStage = new Stage();
     newStage.setScene(scene);
     newStage.setTitle("Productos 2");
     newStage.show();
 
-    // Cerrar la ventana de login
+    // Cerrar la ventana actual
     stage.close();
+    
+    
+/*
+    // Cargar el FXML de la siguiente página
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
+    Parent root = loader.load();
+    
+    Scene scene  = new Scene(root);
+    Stage newStage = new Stage();
+    newStage.setScene(scene);
+    newStage.setTitle("Productos");
+    newStage.show();
+    stage.close();
+    
+
+    // Crear y mostrar nueva escena
+    Scene scene = new Scene(root);
+    Stage newStage = new Stage();
+    newStage.setScene(scene);
+    newStage.setTitle("Productos 2");
+    newStage.show();
+
+    // Cerrar la ventana actual
+    Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+    currentStage.close();
+    */
     }
+
+    
 
 
         @Override
