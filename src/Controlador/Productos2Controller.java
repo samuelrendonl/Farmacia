@@ -4,12 +4,17 @@
  */
 package Controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -17,7 +22,11 @@ import javafx.scene.control.Button;
  * @author samue
  */
 public class Productos2Controller implements Initializable {
-
+  
+    
+    public Stage stage;
+    
+    
     @FXML
     Button btnHome;
     @FXML
@@ -57,7 +66,7 @@ public class Productos2Controller implements Initializable {
     @FXML
     Button btnVitaE;
     @FXML
-    public void VitaEAction(ActionEvent event){
+    public void VitaeAction(ActionEvent event){
         
     }
     @FXML
@@ -82,8 +91,15 @@ public class Productos2Controller implements Initializable {
     Button btnPreviousPage;
     
     @FXML
-    public void PreviousPageAction(ActionEvent event){
+    public void PreviousPageAction(ActionEvent event) throws IOException{
         
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
+    Parent root = loader.load();
+
+    Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+    currentStage.setScene(new Scene(root));
+    currentStage.setTitle("Productos ");
     }
     
     

@@ -28,16 +28,7 @@ public class Main extends Application {
     
     
    
-    void LoginAction(ActionEvent event) throws IOException{
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            
-    }
+
    
     
 

@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 public class ProductosController implements Initializable {
     
-    public Stage stage;
+    public Stage stage ;
     
     @FXML
     Button btnHome; 
@@ -42,88 +42,61 @@ public class ProductosController implements Initializable {
     Button btnNextPage; 
 
     @FXML
-    void HomeAction(ActionEvent event) throws IOException{
+       public  void HomeAction(ActionEvent event) throws IOException{
 
     }
     @FXML
-    void MenuAction(ActionEvent event) throws IOException{
-
+       public  void MenuAction(ActionEvent event) throws IOException{
     }
     @FXML
-    void SulfaferrotabAction(ActionEvent event) throws IOException{
+    public void SulfaferrotabAction(ActionEvent event) throws IOException{
     }
     
     @FXML
-    void SulfaferrojarAction(ActionEvent event) throws IOException{
+       public  void SulfaferrojarAction(ActionEvent event) throws IOException{
+   
+       }
+    @FXML
+       public  void BetametasonaAction(ActionEvent event) throws IOException{
+  
 
     }
     @FXML
-    void BetametasonaAction(ActionEvent event) throws IOException{
+        public void EsomeprazolAction(ActionEvent event) throws IOException{
+
 
     }
     @FXML
-    void EsomeprazolAction(ActionEvent event) throws IOException{
+        public void MetocarbamolAction(ActionEvent event) throws IOException{
 
     }
     @FXML
-    void MetocarbamolAction(ActionEvent event) throws IOException{
+       public  void NaproxenoAction(ActionEvent event) throws IOException{
+
 
     }
     @FXML
-    void NaproxenoAction(ActionEvent event) throws IOException{
+    public void LoratadinaAction(ActionEvent event) throws IOException{
+
 
     }
     @FXML
-    void LoratadinaAction(ActionEvent event) throws IOException{
-
-    }
-    @FXML
-    void AdrenalinaAction(ActionEvent event) throws IOException{
+    public void AdrenalinaAction(ActionEvent event) throws IOException{
 
     }
     @FXML
     public void NextPageAction(ActionEvent event) throws IOException{
-    // Cargar el archivo FXML de Productos2
-FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
-Parent root = loader.load();
-Productos2Controller controller = loader.getController();
-
-    // Crear una nueva escena y etapa
-    Scene scene = new Scene(root);
-    Stage newStage = new Stage();
-    newStage.setScene(scene);
-    newStage.setTitle("Productos 2");
-    newStage.show();
-
-    // Cerrar la ventana actual
-    stage.close();
-    
-    
-/*
-    // Cargar el FXML de la siguiente página
+        
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
     Parent root = loader.load();
-    
-    Scene scene  = new Scene(root);
-    Stage newStage = new Stage();
-    newStage.setScene(scene);
-    newStage.setTitle("Productos");
-    newStage.show();
-    stage.close();
-    
 
-    // Crear y mostrar nueva escena
-    Scene scene = new Scene(root);
-    Stage newStage = new Stage();
-    newStage.setScene(scene);
-    newStage.setTitle("Productos 2");
-    newStage.show();
+    Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
 
-    // Cerrar la ventana actual
-    Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-    currentStage.close();
-    */
+    currentStage.setScene(new Scene(root));
+    currentStage.setTitle("Productos 2");
+  
     }
+    
 
     
 
@@ -131,6 +104,9 @@ Productos2Controller controller = loader.getController();
         @Override
         public void initialize(URL location, ResourceBundle resources) {
         }
+        
+
+        
     }
     
     
