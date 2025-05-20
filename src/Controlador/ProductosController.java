@@ -33,17 +33,35 @@ public class ProductosController implements Initializable {
     Button btnSulfaferrotab;
        @FXML
     public void SulfaferrotabAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Sulfato Ferroso Tableta");
     }
     @FXML
     Button btnSulfaferrojar1;
         @FXML
        public  void SulfaferrojarAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Sulfato Ferroso Jarabe");
    
        }
     @FXML
     Button btnbetametasona; 
         @FXML
        public  void BetametasonaAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Betametasona Crema 0.05%");
   
 
     }
@@ -51,6 +69,12 @@ public class ProductosController implements Initializable {
     Button btnEsomeprazol; 
         @FXML
         public void EsomeprazolAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Esomeprazol Tableta 40mg ");
 
 
     }
@@ -58,12 +82,24 @@ public class ProductosController implements Initializable {
     Button btnMetocarbamol; 
         @FXML
         public void MetocarbamolAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Metocarbamol 750mg Tableta");
 
     }
     @FXML
     Button btnNaproxeno; 
         @FXML
        public  void NaproxenoAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Naproxeno 500mg Tableta");
 
 
     }
@@ -71,6 +107,12 @@ public class ProductosController implements Initializable {
     Button btnLoratadina; 
         @FXML
     public void LoratadinaAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Loratadina Jarabe");
 
 
     }
@@ -79,7 +121,12 @@ public class ProductosController implements Initializable {
     
     @FXML
     public void AdrenalinaAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
 
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Adrenalina Ampolla");
     }
     @FXML
     Button btnNextPage; 

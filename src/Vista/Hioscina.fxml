@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Controlador.HioscinaController">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/BUSCAPINA.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="52.0" layoutY="26.0" mnemonicParsing="false" opacity="0.0" prefHeight="37.0" prefWidth="52.0" style="-fx-cursor: hand;" text="btnHome" />
+      <Button fx:id="btnMenu" layoutX="1117.0" layoutY="14.0" mnemonicParsing="false" onAction="#MenuAction" opacity="0.0" prefHeight="59.0" prefWidth="73.0" style="-fx-cursor: hand;" text="btnMenu" />
+      <Button fx:id="btnAggFavoritos" layoutX="891.0" layoutY="451.0" mnemonicParsing="false" onAction="#AggFavoritosAction" opacity="0.0" prefHeight="59.0" prefWidth="282.0" style="-fx-cursor: hand;" text="btnAggFavoritos" />
+      <Button fx:id="btnAggCarrito" layoutX="891.0" layoutY="525.0" mnemonicParsing="false" onAction="#AggCarritoAction" opacity="0.0" prefHeight="59.0" prefWidth="282.0" style="-fx-cursor: hand;" text="btnAggCarrito" />
+      <Button fx:id="btnComprar" layoutX="891.0" layoutY="601.0" mnemonicParsing="false" onAction="#ComprarAction" opacity="0.0" prefHeight="59.0" prefWidth="282.0" style="-fx-cursor: hand;" text="btnComprar" />
+   </children>
+</AnchorPane>

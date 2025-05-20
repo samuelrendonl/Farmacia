@@ -38,53 +38,102 @@ public class Productos2Controller implements Initializable {
     @FXML
     public void MenuAction(ActionEvent event){
         
+        
     }
     @FXML
     Button btnAcetaminofen;
     @FXML
-    public void AcetaminofenAction(ActionEvent event){
+    public void AcetaminofenAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Acetaminofen.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Acetaminofen 500mg Tableta");
         
     }
     @FXML
     Button btnAcetaminofenjar;
     @FXML
-    public void AcetaminofenjarAction(ActionEvent event){
+    public void AcetaminofenjarAction(ActionEvent event) throws IOException{
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/AcetaminofenJar.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Acetaminofen Jarabe");
         
     }
     @FXML
     Button btnBuscapina;
     @FXML
-    public void BuscapinaAction(ActionEvent event){
+    public void BuscapinaAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Hioscina.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Buscapina 20mg Tableta");
         
     }
     @FXML
     Button btnDiclofenaco;
     @FXML
-    public void DiclofenacoAction(ActionEvent event){
+    public void DiclofenacoAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Diclofenaco.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Diclofenaco Gel 1% Crema Topica");
         
     }
     @FXML
     Button btnVitaE;
     @FXML
-    public void VitaeAction(ActionEvent event){
+    public void VitaeAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Vitamina E");
         
     }
     @FXML
     Button btnVitaC;
     @FXML
-    public void VitacAction(ActionEvent event){
+    public void VitacAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Vitamina C");
         
     }
     @FXML
     Button btnIbuprofeno;
     @FXML
-    public void IbuprofenoAction(ActionEvent event){
+    public void IbuprofenoAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Ibuprofeno 800mg Tableta");
         
     }
     @FXML
     Button btnClotrimazol;
     @FXML
-    public void ClotrimazolAction(ActionEvent event){
+    public void ClotrimazolAction(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Clotrimazol Crema Vaginal 1%");
         
     }
     @FXML
