@@ -13,7 +13,7 @@
             <Image url="@../Imagenes/BETMETASONA%20CREMA.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnHome" layoutX="50.0" layoutY="25.0" mnemonicParsing="false" onAction="#HomeAciton" opacity="0.0" prefHeight="36.0" prefWidth="52.0" style="-fx-cursor: hand;" text="btnHome" />
+      <Button fx:id="btnHome" layoutX="50.0" layoutY="25.0" mnemonicParsing="false" onAction="#HomeAction" opacity="0.0" prefHeight="36.0" prefWidth="52.0" style="-fx-cursor: hand;" text="btnHome" />
       <Button fx:id="btnMenu" layoutX="1121.0" layoutY="14.0" mnemonicParsing="false" onAction="#MenuAction" opacity="0.0" prefHeight="56.0" prefWidth="68.0" style="-fx-cursor: hand;" text="btnMenu" />
       <Button fx:id="btnAggFavoritos" layoutX="889.0" layoutY="451.0" mnemonicParsing="false" onAction="#AggFavoritosAction" opacity="0.0" prefHeight="63.0" prefWidth="283.0" style="-fx-cursor: hand;" text="btnAggFavoritos" />
       <Button fx:id="btnAggCarrito" layoutX="889.0" layoutY="525.0" mnemonicParsing="false" onAction="#AggCarritoAction" opacity="0.0" prefHeight="63.0" prefWidth="283.0" style="-fx-cursor: hand;" text="btnAggCarrito" />

@@ -21,18 +21,19 @@ import javafx.stage.Stage;
  *
  * @author samue
  */
-public class AcetaminofenJarController implements Initializable {
+public class AdrenalinaController implements Initializable {
 
-@FXML
+    @FXML
 Button BtnHome;
 
 @FXML
 public void HomeAction(ActionEvent event) throws IOException{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
-    Parent root = loader.load();
-    Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-    currentStage.setScene(new Scene(root));
-    currentStage.setTitle("Productos 2");    
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Productos");    
 }
 
 @FXML
@@ -62,8 +63,9 @@ Button btnComprar;
 @FXML
 public void ComprarAction(ActionEvent event){
     
-}
-    @Override
+}    
+
+@Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    

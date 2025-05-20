@@ -82,7 +82,7 @@ public class ProductosController implements Initializable {
     Button btnMetocarbamol; 
         @FXML
         public void MetocarbamolAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Metocarbamol.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -94,7 +94,7 @@ public class ProductosController implements Initializable {
     Button btnNaproxeno; 
         @FXML
        public  void NaproxenoAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Naproxeno.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -105,9 +105,9 @@ public class ProductosController implements Initializable {
     }
     @FXML
     Button btnLoratadina; 
-        @FXML
+    @FXML
     public void LoratadinaAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Loratadina.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -121,7 +121,7 @@ public class ProductosController implements Initializable {
     
     @FXML
     public void AdrenalinaAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Adrenalina.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
