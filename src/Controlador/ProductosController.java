@@ -33,7 +33,7 @@ public class ProductosController implements Initializable {
     Button btnSulfaferrotab;
        @FXML
     public void SulfaferrotabAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Sulfatoferroso.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -41,10 +41,10 @@ public class ProductosController implements Initializable {
         currentStage.setTitle("Sulfato Ferroso Tableta");
     }
     @FXML
-    Button btnSulfaferrojar1;
+    Button btnSulfaferrojar;
         @FXML
        public  void SulfaferrojarAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Sulfatoferrosojar.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -56,7 +56,7 @@ public class ProductosController implements Initializable {
     Button btnbetametasona; 
         @FXML
        public  void BetametasonaAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Betametasona.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -69,7 +69,7 @@ public class ProductosController implements Initializable {
     Button btnEsomeprazol; 
         @FXML
         public void EsomeprazolAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Esomeprazol.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

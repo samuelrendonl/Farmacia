@@ -21,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author samue
  */
-public class AcetaminofenJarController implements Initializable {
+public class BetametasonaController implements Initializable {
 
 @FXML
 Button BtnHome;

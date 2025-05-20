@@ -92,7 +92,7 @@ public class Productos2Controller implements Initializable {
     Button btnVitaE;
     @FXML
     public void VitaeAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/VitaE.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -104,7 +104,7 @@ public class Productos2Controller implements Initializable {
     Button btnVitaC;
     @FXML
     public void VitacAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/VitaC.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -116,7 +116,7 @@ public class Productos2Controller implements Initializable {
     Button btnIbuprofeno;
     @FXML
     public void IbuprofenoAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Ibuprofeno.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -128,7 +128,7 @@ public class Productos2Controller implements Initializable {
     Button btnClotrimazol;
     @FXML
     public void ClotrimazolAction(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Clotrimazol.fxml"));
         Parent root = loader.load();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

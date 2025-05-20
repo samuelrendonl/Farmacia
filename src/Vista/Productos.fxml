@@ -15,7 +15,7 @@
       <Button fx:id="btnHome" layoutX="51.0" layoutY="23.0" mnemonicParsing="false" onAction="#HomeAction" opacity="0.0" prefHeight="37.0" prefWidth="52.0" style="-fx-cursor: hand;" text="btnHome" />
       <Button fx:id="btnMenu" layoutX="1123.0" layoutY="14.0" mnemonicParsing="false" onAction="#MenuAction" opacity="0.0" prefHeight="55.0" prefWidth="69.0" style="-fx-cursor: hand;" text="Menu" />
       <Button fx:id="btnSulfaferrotab" layoutX="29.0" layoutY="123.0" mnemonicParsing="false" onAction="#SulfaferrotabAction" opacity="0.0" prefHeight="271.0" prefWidth="238.0" style="-fx-cursor: hand;" text="btnSulfaferrotab" />
-      <Button fx:id="btnSulfaferrojar" layoutX="341.0" layoutY="123.0" mnemonicParsing="false" onAction="#SulfaferrojarAction" opacity="0.0" prefHeight="271.0" prefWidth="238.0" style="-fx-cursor: hand;" text="btnSulfaferrotab" />
+      <Button fx:id="btnSulfaferrojar" layoutX="341.0" layoutY="123.0" mnemonicParsing="false" onAction="#SulfaferrojarAction" opacity="0.0" prefHeight="271.0" prefWidth="238.0" style="-fx-cursor: hand;" text="btnSulfaferrojar" />
       <Button fx:id="btnbetametasona" layoutX="649.0" layoutY="123.0" mnemonicParsing="false" onAction="#BetametasonaAction" opacity="0.0" prefHeight="271.0" prefWidth="238.0" style="-fx-cursor: hand;" text="btnBetametasona" />
       <Button fx:id="btnEsomeprazol" layoutX="962.0" layoutY="123.0" mnemonicParsing="false" onAction="#EsomeprazolAction" opacity="0.0" prefHeight="271.0" prefWidth="238.0" style="-fx-cursor: hand;" text="btnEsomeprazol" />
       <Button fx:id="btnMetocarbamol" layoutX="29.0" layoutY="433.0" mnemonicParsing="false" onAction="#MetocarbamolAction" opacity="0.0" prefHeight="271.0" prefWidth="238.0" style="-fx-cursor: hand;" text="btnMetocarbamol" />

@@ -21,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author samue
  */
-public class AcetaminofenJarController implements Initializable {
+public class SulfatoferrosojarController implements Initializable {
 
 @FXML
 Button BtnHome;
@@ -33,7 +33,8 @@ public void HomeAction(ActionEvent event) throws IOException{
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Productos");    
+        currentStage.setTitle("Productos");  
+    
 }
 
 @FXML
