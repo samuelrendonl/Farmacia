@@ -41,7 +41,7 @@ Button btnMenu;
 
 @FXML
 public void MenuAction(ActionEvent event){
-    
+ MenuGestor.mostrarMenu();   
 }
 @FXML
 Button btnAggFavoritos;

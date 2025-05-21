@@ -18,21 +18,17 @@ public class Main extends Application {
 private static Stage primaryStage;
 @Override
 public void start(Stage stage) throws IOException {
-    primaryStage = stage; // Guarda el stage principal
-
+    primaryStage = stage;
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Login.fxml"));
     Parent root = loader.load();
     Scene scene = new Scene(root);
-    primaryStage.setScene(scene);
-    primaryStage.setTitle("CCR Farmacéutica");
-
-    LoginController controller = loader.getController();
-    controller.setStage(primaryStage);
-    primaryStage.show();
+    stage.setScene(scene);
+    stage.setTitle("CCR Farmacéutica");
+    stage.show();
 }
 
 public static Stage getStage() {
-return primaryStage;
+    return primaryStage;
 }
     
     
