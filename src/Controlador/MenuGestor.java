@@ -31,22 +31,26 @@ public class MenuGestor {
         }
     }
         public static void mostrarMenu2() {
-        try {
-            FXMLLoader loader = new FXMLLoader(MenuGestor.class.getResource("/Vista/MenuMetodoPago.fxml"));
-            Parent menuRoot = loader.load();
+    try {
+        FXMLLoader loader = new FXMLLoader(MenuGestor.class.getResource("/Vista/MenuMetodoPago.fxml"));
+        Parent menuRoot = loader.load();
 
-            popup = new Popup();
-            popup.setAutoHide(true);
-            popup.getContent().add(menuRoot);
+        popup = new Popup();
+        popup.setAutoHide(true);
+        popup.getContent().add(menuRoot);
 
-            Stage stage = Main.getStage();
-            double x = stage.getX() + stage.getWidth() - 800;
-            double y = stage.getY() + 270;
+        // Obtener el controlador y pasarle el popup
+        MenuMetodoPagoController controller = loader.getController();
+        controller.setPopup(popup);  // ← esto es lo que faltaba
 
-            popup.show(stage, x, y);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Stage stage = Main.getStage();
+        double x = stage.getX() + stage.getWidth() - 800;
+        double y = stage.getY() + 270;
+
+        popup.show(stage, x, y);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 
 }
         
