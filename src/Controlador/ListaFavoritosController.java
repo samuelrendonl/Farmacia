@@ -21,51 +21,26 @@ import javafx.stage.Stage;
  *
  * @author samue
  */
-public class AcetaminofenController implements Initializable {
+public class ListaFavoritosController implements Initializable {
 
-@FXML
-Button BtnHome;
-
-@FXML
-public void HomeAction(ActionEvent event) throws IOException{
+   @FXML
+   Button btnHome;
+   @FXML
+   public void HomeAction(ActionEvent event) throws IOException{
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
     Parent root = loader.load();
     Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
     currentStage.setScene(new Scene(root));
     currentStage.setTitle("Productos 2");   
-}
-
-@FXML
-Button btnMenu;
-
-@FXML
-public void MenuAction(ActionEvent event){
-    MenuGestor.mostrarMenu();    
-}
-@FXML
-Button btnAggFavoritos;
-
-@FXML
-public void AggFavoritosAction(ActionEvent event){
-    
-}
-@FXML
-Button btnAggCarrito;
-
-@FXML
-public void AggCarritoAction(ActionEvent event){
-    
-}
-@FXML
-Button btnComprar;
-
-@FXML
-public void ComprarAction(ActionEvent event){
-    
-}
-    
-    
-    
+   }
+   @FXML
+   Button btnMenu;
+   @FXML
+   public void MenuAction(ActionEvent event){
+    MenuGestor.mostrarMenu();       
+   }
+   
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

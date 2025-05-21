@@ -21,8 +21,8 @@ public class MenuGestor {
             popup.getContent().add(menuRoot);
 
             Stage stage = Main.getStage();
-            double x = stage.getX() + stage.getWidth() - 280;
-            double y = stage.getY() + 40;
+            double x = stage.getX() + stage.getWidth() - 353;
+            double y = stage.getY() + 115;
 
             popup.show(stage, x, y);
         } catch (IOException e) {
