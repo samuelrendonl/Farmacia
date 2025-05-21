@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -21,37 +22,54 @@ import javafx.stage.Stage;
  *
  * @author samue
  */
-public class CarritoController implements Initializable {
+public class InformacionCompraController implements Initializable {
 
+@FXML
+Button BtnHome;
 
-    @FXML
-    Button btnHome;
-  
-   @FXML
-    public void HomeAction(ActionEvent event) throws IOException{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
+@FXML
+public void HomeAction(ActionEvent event) throws IOException{
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
     Parent root = loader.load();
     Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
     currentStage.setScene(new Scene(root));
-    currentStage.setTitle("Productos");   
+    currentStage.setTitle("Productos 2");   
 }
-    @FXML
-    Button btnMenu;
-    @FXML
-    public void MenuAction(ActionEvent event){
+
+@FXML
+Button btnMenu;
+
+@FXML
+public void MenuAction(ActionEvent event){
     MenuGestor.mostrarMenu();    
-    }
-    @FXML
-    Button btnComprarC;
-    @FXML
-    public void ComprarCAction(ActionEvent event) throws IOException{
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/InformacionCompra.fxml"));
-    Parent root = loader.load();
-    Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-    currentStage.setScene(new Scene(root));
-    currentStage.setTitle("Informacion De Compra");    
-    }
-            
+}
+@FXML
+Button btnContinuarCompra;
+
+@FXML
+public void ContinuarCompraAction(ActionEvent event){
+    MenuGestor.mostrarMenu2();    
+}
+
+@FXML
+TextField txtnombre;
+
+@FXML
+TextField txtid;
+
+@FXML
+TextField txtcalle;
+
+@FXML
+TextField txtCiudad;
+
+@FXML
+TextField txtDepartamento;
+
+@FXML
+TextField txtCP;
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -8,10 +8,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,7 +22,7 @@ import javafx.stage.Stage;
  *
  * @author samue
  */
-public class MenuController implements Initializable {
+public class MenuMetodoPagoController implements Initializable {
 
         private Popup popup; // será seteado desde fuera
 
@@ -50,36 +49,20 @@ private void cambiarVista(String fxml, String titulo, ActionEvent e) {
 }
 
 @FXML
-public void FavoritosAction(ActionEvent event) {
-    cambiarVista("ListaFavoritos.fxml", "Lista De Favoritos", event);
+public void TarjetaAction(ActionEvent event) {
+    cambiarVista("Tarjeta.fxml", "Informacion Tarjeta", event);
     cerrarPopup();
 }
 
 @FXML
-public void CarritoAction(ActionEvent event) {
-    cambiarVista("Carrito.fxml", "Carrito De Compras", event);
+public void TransefrenciaAction(ActionEvent event) {
+    cambiarVista("Transferencia.fxml", "Informacion Transferenica", event);
     cerrarPopup();
 }
-
-@FXML
-public void HistorialAction(ActionEvent event) {
-    cambiarVista("Historial.fxml", "Historial De Compras", event);
-    cerrarPopup();
-}
-
-
-    
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+    
 }
-
-
-
-    public void mostrarMenu(Stage stage) {
-    }
-}
-
-   
-
