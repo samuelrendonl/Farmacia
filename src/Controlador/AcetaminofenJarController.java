@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -46,9 +47,26 @@ public void MenuAction(ActionEvent event){
 Button btnAggFavoritos;
 
 @FXML
-public void AggFavoritosAction(ActionEvent event){
-    
+private void AggFavoritosAction(ActionEvent event) {
+    Producto producto = new Producto("Acetaminofén 150mg", "Frasco x60mL de Acetaminofén Jarabe", 3.000, "Jarabe");
+    GestorFavoritos.agregarAFavoritos(producto);
+
+    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+    alerta.setTitle("Confirmación");
+    alerta.setContentText("Producto agregado a favoritos.");
+    alerta.showAndWait();
+
+    // Cambia a la vista de favoritos
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ListaFavoritos.fxml"));
+        Parent root = loader.load();
+        Stage stage = Main.getStage(); // o como obtienes el stage principal
+        stage.setScene(new Scene(root));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 }
+
 @FXML
 Button btnAggCarrito;
 
