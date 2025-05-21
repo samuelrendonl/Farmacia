@@ -13,18 +13,27 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
     
-    @Override
-    public void start(Stage primaryStage) throws IOException { 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Login.fxml"));
-        Parent root  =  loader.load();
-        Scene  scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("CCR Farmaceutica");
-        LoginController controller = loader.getController();
-        controller.setStage(primaryStage);
-        primaryStage.show();
-    }
+private static Stage primaryStage;
+@Override
+public void start(Stage stage) throws IOException {
+    primaryStage = stage; // Guarda el stage principal
+
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Login.fxml"));
+    Parent root = loader.load();
+    Scene scene = new Scene(root);
+    primaryStage.setScene(scene);
+    primaryStage.setTitle("CCR Farmacéutica");
+
+    LoginController controller = loader.getController();
+    controller.setStage(primaryStage);
+    primaryStage.show();
+}
+
+public static Stage getStage() {
+return primaryStage;
+}
     
     
    

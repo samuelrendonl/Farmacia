@@ -37,7 +37,7 @@ public class Productos2Controller implements Initializable {
     Button btnMenu;
     @FXML
     public void MenuAction(ActionEvent event){
-        
+    MenuGestor.mostrarMenu();
         
     }
     @FXML

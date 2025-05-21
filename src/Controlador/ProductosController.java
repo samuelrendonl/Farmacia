@@ -28,6 +28,8 @@ public class ProductosController implements Initializable {
     Button btnMenu; 
        @FXML
        public  void MenuAction(ActionEvent event) throws IOException{
+               MenuGestor.mostrarMenu();
+
     }
     @FXML
     Button btnSulfaferrotab;
