@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Modelo.MenuGestor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -47,8 +49,52 @@ public void MenuAction(ActionEvent event){
 Button btnContinuarCompra;
 
 @FXML
-public void ContinuarCompraAction(ActionEvent event){
-    MenuGestor.mostrarMenu2();    
+public void ContinuarCompraAction(ActionEvent event) {
+    if (txtnombre.getText().isEmpty()) {
+        mostrarAlerta("Por favor ingresa el nombre.");
+        txtnombre.requestFocus();
+        return;
+    }
+
+    if (txtid.getText().isEmpty()) {
+        mostrarAlerta("Por favor ingresa el número de identificación.");
+        txtid.requestFocus();
+        return;
+    }
+
+    if (txtcalle.getText().isEmpty()) {
+        mostrarAlerta("Por favor ingresa la calle.");
+        txtcalle.requestFocus();
+        return;
+    }
+
+    if (txtCiudad.getText().isEmpty()) {
+        mostrarAlerta("Por favor ingresa la ciudad.");
+        txtCiudad.requestFocus();
+        return;
+    }
+
+    if (txtDepartamento.getText().isEmpty()) {
+        mostrarAlerta("Por favor ingresa el departamento.");
+        txtDepartamento.requestFocus();
+        return;
+    }
+
+    if (txtCP.getText().isEmpty()) {
+        mostrarAlerta("Por favor ingresa el código postal.");
+        txtCP.requestFocus();
+        return;
+    }
+
+    // Si todos los campos están llenos
+    MenuGestor.mostrarMenu2();
+}
+
+private void mostrarAlerta(String mensaje) {
+    Alert alerta = new Alert(Alert.AlertType.WARNING);
+    alerta.setTitle("Campo vacío");
+    alerta.setContentText(mensaje);
+    alerta.showAndWait();   
 }
 
 @FXML

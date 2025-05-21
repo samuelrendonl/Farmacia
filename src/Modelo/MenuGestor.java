@@ -1,5 +1,7 @@
-package Controlador;
+package Modelo;
 
+import Controlador.Main;
+import Controlador.MenuMetodoPagoController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Popup;

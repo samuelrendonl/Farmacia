@@ -4,8 +4,11 @@
  */
 package Controlador;
 
+import Modelo.MenuGestor;
+import Modelo.GestorCarrito;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Queue;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -22,7 +28,10 @@ import javafx.stage.Stage;
  * @author samue
  */
 public class CarritoController implements Initializable {
-
+private String nombre;
+private String descripcion;
+private double precio;
+private String tipo;
 
     @FXML
     Button btnHome;
@@ -51,10 +60,31 @@ public class CarritoController implements Initializable {
     currentStage.setScene(new Scene(root));
     currentStage.setTitle("Informacion De Compra");    
     }
-            
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+@FXML            
+private TableView<Producto> tablaCarrito;
+
+
+
+@FXML
+private TableColumn<Producto, String> colNombre;
+
+@FXML
+private TableColumn<Producto, String> colDescripcion;
+
+@FXML
+private TableColumn<Producto, Double> colPrecio;
+
+@FXML
+private TableColumn<Producto, String> colTipo;
+
+
+@Override
+public void initialize(URL location, ResourceBundle resources) {
+    colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+    colDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+    colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+    colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+
+    tablaCarrito.getItems().setAll(GestorCarrito.obtenerCarrito());
+}
 }

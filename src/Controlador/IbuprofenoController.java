@@ -4,6 +4,8 @@
  */
 package Controlador;
 
+import Modelo.MenuGestor;
+import Modelo.GestorFavoritos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,7 +27,7 @@ import javafx.stage.Stage;
 public class IbuprofenoController implements Initializable {
 
 
-    @FXML
+@FXML
 Button BtnHome;
 
 @FXML

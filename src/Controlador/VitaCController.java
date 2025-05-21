@@ -4,6 +4,9 @@
  */
 package Controlador;
 
+import Modelo.MenuGestor;
+import Modelo.GestorCarrito;
+import Modelo.GestorFavoritos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,8 +73,23 @@ private void AggFavoritosAction(ActionEvent event) {
 Button btnAggCarrito;
 
 @FXML
-public void AggCarritoAction(ActionEvent event){
-    
+public void AggCarritoAction(ActionEvent event) {
+    Producto producto = new Producto("Vita C ", "Caja x100 Tabletas Masticables de Vitamina C", 22.000, "Tableta");
+    GestorCarrito.agregarAlCarrito(producto);
+
+    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+    alerta.setTitle("Confirmación");
+    alerta.setContentText("Producto agregado al carrito.");
+    alerta.showAndWait();
+
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Carrito.fxml"));
+        Parent root = loader.load();
+        Stage stage = Main.getStage();
+        stage.setScene(new Scene(root));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 }
 @FXML
 Button btnComprar;

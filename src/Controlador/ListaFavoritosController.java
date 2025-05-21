@@ -4,6 +4,8 @@
  */
 package Controlador;
 
+import Modelo.MenuGestor;
+import Modelo.GestorFavoritos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;

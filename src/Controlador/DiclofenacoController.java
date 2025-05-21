@@ -4,6 +4,9 @@
  */
 package Controlador;
 
+import Modelo.MenuGestor;
+import Modelo.GestorCarrito;
+import Modelo.GestorFavoritos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,8 +73,23 @@ private void AggFavoritosAction(ActionEvent event) {
 Button btnAggCarrito;
 
 @FXML
-public void AggCarritoAction(ActionEvent event){
-    
+public void AggCarritoAction(ActionEvent event) {
+    Producto producto = new Producto("Diclofenaco Gel al 1%", "Gel Diclofenaco al 1% Uso tópico 50g", 8.000, "Crema");
+    GestorCarrito.agregarAlCarrito(producto);
+
+    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+    alerta.setTitle("Confirmación");
+    alerta.setContentText("Producto agregado al carrito.");
+    alerta.showAndWait();
+
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Carrito.fxml"));
+        Parent root = loader.load();
+        Stage stage = Main.getStage();
+        stage.setScene(new Scene(root));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 }
 @FXML
 Button btnComprar;
