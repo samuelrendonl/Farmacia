@@ -51,12 +51,12 @@ Button btnAggFavoritos;
 
 @FXML
 public void AggFavoritosAction(ActionEvent event){
-        Producto producto = new Producto("Acetaminofén 500 mg", "Caja x100 tabletas Via Oral", 9.000, "Tableta");
+    Producto producto = new Producto("Acetaminofén 500 mg", "Caja x100 tabletas Via Oral", 9.000, "Tableta");
     GestorFavoritos.agregarAFavoritos(producto);
 
     Alert alerta = new Alert(Alert.AlertType.INFORMATION);
     alerta.setTitle("Confirmación");
-    alerta.setContentText("Producto agregado a favoritos.");
+    alerta.setContentText("Producto agregado a favoritos");
     alerta.showAndWait();
 
     // Cambia a la vista de favoritos
