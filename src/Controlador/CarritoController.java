@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -76,7 +77,31 @@ private TableColumn<Producto, Double> colPrecio;
 
 @FXML
 private TableColumn<Producto, String> colTipo;
+@FXML
+private Label lblTotal;
 
+@FXML
+private Button btnEliminar;
+@FXML
+private Button btnLimpiarCarrito;
+
+
+@FXML
+public void eliminarSeleccionadoAction(ActionEvent event) {
+    Producto seleccionado = tablaCarrito.getSelectionModel().getSelectedItem();
+    if (seleccionado != null) {
+        tablaCarrito.getItems().remove(seleccionado);
+        GestorCarrito.eliminarDelCarrito(seleccionado); // Asegúrate de tener este método
+        actualizarTotal();
+    }
+} 
+
+private void actualizarTotal() {
+    double total = tablaCarrito.getItems().stream()
+        .mapToDouble(Producto::getPrecio)
+        .sum();
+    lblTotal.setText("$" + String.format("%.2f", total));
+}
 
 @Override
 public void initialize(URL location, ResourceBundle resources) {
@@ -86,5 +111,16 @@ public void initialize(URL location, ResourceBundle resources) {
     colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 
     tablaCarrito.getItems().setAll(GestorCarrito.obtenerCarrito());
+    
+    tablaCarrito.getItems().setAll(GestorCarrito.obtenerCarrito());
+    actualizarTotal();
+    
+   }
+
+@FXML
+public void limpiarCarritoAction(ActionEvent event) {
+    GestorCarrito.limpiarCarrito();
+    tablaCarrito.getItems().clear();
+    actualizarTotal(); 
 }
 }

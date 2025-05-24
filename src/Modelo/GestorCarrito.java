@@ -1,10 +1,6 @@
 package Modelo;
 
 import Controlador.Producto;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -24,5 +20,10 @@ public class GestorCarrito {
 
     public static void limpiarCarrito() {
         carrito.clear();
+    }
+
+    // ✅ Nuevo método para eliminar un producto del carrito
+    public static void eliminarDelCarrito(Producto producto) {
+        carrito.remove(producto);
     }
 }
