@@ -1,35 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
-import Controlador.Producto;
-import java.util.LinkedList;
 import java.util.List;
 
-/**
- *
- * @author samue
- */
 public class GestorFavoritos {
-    private static final List<Producto> favoritos = new LinkedList<>();
+
+    private static ListaSimple<Producto> favoritos = new ListaSimple<>();
 
     public static void agregarAFavoritos(Producto producto) {
-        if (!favoritos.contains(producto)) {
-            favoritos.add(producto);
+        if (!favoritos.contiene(producto)) {
+            favoritos.agregar(producto);
         }
     }
 
     public static void eliminarFavorito(Producto producto) {
-        favoritos.remove(producto);
-    }
-
-    public static List<Producto> obtenerFavoritos() {
-        return favoritos;
+        favoritos.eliminar(producto);
     }
 
     public static void limpiarFavoritos() {
-        favoritos.clear();
-    }   
+        favoritos = new ListaSimple<>();
+    }
+
+    public static List<Producto> obtenerFavoritos() {
+        return favoritos.toList();
+    }
 }

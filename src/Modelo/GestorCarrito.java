@@ -1,29 +1,32 @@
 package Modelo;
 
-import Controlador.Producto;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GestorCarrito {
 
-    private static final ObservableList<Producto> carrito = FXCollections.observableArrayList();
-
-    public static ObservableList<Producto> obtenerCarrito() {
-        return carrito;
-    }
+    private static Pila<Producto> carrito = new Pila<>();
 
     public static void agregarAlCarrito(Producto producto) {
-        if (producto != null) {
-            carrito.add(producto);
+        carrito.apilar(producto);
+    }
+
+    // Para eliminar un producto arbitrario, convertimos la pila a lista y reconstruimos la pila sin ese producto
+    public static void eliminarProducto(Producto producto) {
+        List<Producto> lista = carrito.toList();
+        lista.removeIf(p -> p.equals(producto));
+        carrito = new Pila<>();
+        // Reconstruir pila (apilando en orden inverso para mantener orden)
+        for (int i = lista.size() -1; i >=0; i--) {
+            carrito.apilar(lista.get(i));
         }
     }
 
     public static void limpiarCarrito() {
-        carrito.clear();
+        carrito = new Pila<>();
     }
 
-    // ✅ Nuevo método para eliminar un producto del carrito
-    public static void eliminarDelCarrito(Producto producto) {
-        carrito.remove(producto);
+    public static List<Producto> obtenerProductos() {
+        return carrito.toList();
     }
 }

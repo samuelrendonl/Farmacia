@@ -4,11 +4,11 @@
  */
 package Controlador;
 
+import Modelo.Producto;
 import Modelo.MenuGestor;
 import Modelo.GestorFavoritos;
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -22,33 +22,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author samue
- */
 public class ListaFavoritosController implements Initializable {
 
-   @FXML
-   Button btnHome;
-   @FXML
-   public void HomeAction(ActionEvent event) throws IOException{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
-    Parent root = loader.load();
-    Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-    currentStage.setScene(new Scene(root));
-    currentStage.setTitle("Productos");   
-   }
-   @FXML
-   Button btnMenu;
-   @FXML
-   public void MenuAction(ActionEvent event){
-    MenuGestor.mostrarMenu();       
-   }
-@FXML
+    @FXML
+    private Button btnHome, btnMenu;
+
+    @FXML
     private TableView<Producto> tablaFavoritos;
 
     @FXML
@@ -63,18 +44,54 @@ public class ListaFavoritosController implements Initializable {
     @FXML
     private TableColumn<Producto, String> colCategoria;
 
+    @FXML
+    private Button btnEliminarFavorito;
+
+    @FXML
+    private Button btnLimpiarFavoritos;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        colDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        colNombre.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("nombre"));
+        colDescripcion.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("descripcion"));
+        colPrecio.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("precio"));
+        colCategoria.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("categoria"));
 
-        // Cargar los productos desde la lista de favoritos
-        ObservableList<Producto> favoritos = FXCollections.observableArrayList(GestorFavoritos.obtenerFavoritos());
-        tablaFavoritos.setItems(favoritos);
+        cargarDatos();
     }
-   
-   
-    
+
+    private void cargarDatos() {
+        List<Producto> lista = GestorFavoritos.obtenerFavoritos();
+        ObservableList<Producto> obsLista = FXCollections.observableArrayList(lista);
+        tablaFavoritos.setItems(obsLista);
+    }
+
+    @FXML
+    private void HomeAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
+        Parent root = loader.load();
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Productos");
+    }
+
+    @FXML
+    private void MenuAction(ActionEvent event) {
+        MenuGestor.mostrarMenu();
+    }
+
+    @FXML
+    private void eliminarFavoritoSeleccionadoAction(ActionEvent event) {
+        Producto seleccionado = tablaFavoritos.getSelectionModel().getSelectedItem();
+        if (seleccionado != null) {
+            tablaFavoritos.getItems().remove(seleccionado);
+            GestorFavoritos.eliminarFavorito(seleccionado);
+        }
+    }
+
+    @FXML
+    private void limpiarFavoritosAction(ActionEvent event) {
+        tablaFavoritos.getItems().clear();
+        GestorFavoritos.limpiarFavoritos();
+    }
 }

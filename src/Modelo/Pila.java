@@ -8,7 +8,9 @@ package Modelo;
  *
  * @author samue
  */
+import java.util.ArrayList;
 import java.util.EmptyStackException;
+import java.util.List;
 
 public class Pila<T> {
     private Nodo<T> cima;
@@ -43,4 +45,14 @@ public class Pila<T> {
     public boolean estaVacia() {
         return cima == null;
     }
+    
+    public List<T> toList() {
+    List<T> lista = new ArrayList<>();
+    Nodo<T> actual = cima;
+    while (actual != null) {
+        lista.add(actual.valor);
+        actual = actual.siguiente;
+    }
+    return lista;
+}
 }

@@ -4,6 +4,8 @@
  */
 package Controlador;
 
+
+import Modelo.Producto;
 import Modelo.GestorCarrito;
 import Modelo.GestorHistorial;
 import Modelo.MenuGestor;
@@ -24,111 +26,127 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author samue
- */
+import javafx.fxml.FXMLLoader;
+
+import javafx.scene.Parent;
+
+import javafx.scene.Parent;
+
+import javafx.scene.Parent;
+
+import javafx.scene.Parent;
+
 public class TarjetaController implements Initializable {
-@FXML
-TextField txtidTarjeta;
-@FXML
-TextField txtNombre;
-@FXML
-TextField txtcvv;
-@FXML
-TextField txtId;
-@FXML
-DatePicker DateVencimiento;
-@FXML
-Button btnHome;
-@FXML
-public void HomeAction(ActionEvent event) throws IOException{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
-    Parent root = loader.load();
-    Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-    currentStage.setScene(new Scene(root));
-    currentStage.setTitle("Productos");   
-}
-@FXML
-Button btnMenu;
 
-@FXML
-public void MenuAction(ActionEvent event){
-    MenuGestor.mostrarMenu();    
-}
-@FXML
-Button btnPago;
+    @FXML
+    TextField txtidTarjeta;
+    @FXML
+    TextField txtNombre;
+    @FXML
+    TextField txtcvv;
+    @FXML
+    TextField txtId;
+    @FXML
+    DatePicker DateVencimiento;
+    @FXML
+    Button btnHome;
+    @FXML
+    Button btnMenu;
+    @FXML
+    Button btnPago;
 
-
-@FXML
-public void PagoAction(ActionEvent event) {
-    if (txtidTarjeta.getText().isEmpty()) {
-        mostrarAlerta("Por favor ingresa el número de tarjeta.");
-        txtidTarjeta.requestFocus();
-        return;
-    }
-
-    if (txtNombre.getText().isEmpty()) {
-        mostrarAlerta("Por favor ingresa el nombre del titular.");
-        txtNombre.requestFocus();
-        return;
-    }
-
-    if (txtcvv.getText().isEmpty()) {
-        mostrarAlerta("Por favor ingresa el código CVV.");
-        txtcvv.requestFocus();
-        return;
-    }
-
-    if (txtId.getText().isEmpty()) {
-        mostrarAlerta("Por favor ingresa tu identificación.");
-        txtId.requestFocus();
-        return;
-    }
-
-    if (DateVencimiento.getValue() == null) {
-        mostrarAlerta("Por favor selecciona la fecha de vencimiento.");
-        DateVencimiento.requestFocus();
-        return;
-    }
-
-    Alert confirmacion = new Alert(Alert.AlertType.INFORMATION);
-    confirmacion.setTitle("Pago exitoso");
-    confirmacion.setHeaderText("¡Gracias por tu compra!");
-    confirmacion.setContentText("Su pago ha sido exitoso y su pedido está en camino.");
-    confirmacion.showAndWait();
-
-    try {
-        // Paso para agregar al historial
-        ObservableList<Producto> productosCarrito = FXCollections.observableArrayList(GestorCarrito.obtenerCarrito());
-        GestorHistorial.agregarListaAlHistorial(productosCarrito);
-        GestorCarrito.limpiarCarrito();
-
-        // Cargar vista de historial
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Historial.fxml"));
+    @FXML
+    public void HomeAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
         Parent root = loader.load();
-        Stage stage = Main.getStage();
-        stage.setScene(new Scene(root));
-
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
-
-public void mostrarAlerta(String mensaje) {
-    Alert alerta = new Alert(Alert.AlertType.WARNING);
-    alerta.setTitle("Campo obligatorio");
-    alerta.setContentText(mensaje);
-    alerta.showAndWait();
-}   
-
-@Override
-public void initialize(URL url, ResourceBundle rb) {
-    // Configuración inicial, si tenés algo. Si no, dejalo vacío.
-}
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Productos");
     }
 
+    @FXML
+    public void MenuAction(ActionEvent event) {
+        MenuGestor.mostrarMenu();
+    }
+
+    @FXML
+    public void PagoAction(ActionEvent event) {
+        if (txtidTarjeta.getText().isEmpty()) {
+            mostrarAlerta("Por favor ingresa el número de tarjeta.");
+            txtidTarjeta.requestFocus();
+            return;
+        }
+
+        if (txtNombre.getText().isEmpty()) {
+            mostrarAlerta("Por favor ingresa el nombre del titular.");
+            txtNombre.requestFocus();
+            return;
+        }
+
+        if (txtcvv.getText().isEmpty()) {
+            mostrarAlerta("Por favor ingresa el código CVV.");
+            txtcvv.requestFocus();
+            return;
+        }
+
+        if (txtId.getText().isEmpty()) {
+            mostrarAlerta("Por favor ingresa tu identificación.");
+            txtId.requestFocus();
+            return;
+        }
+
+        if (DateVencimiento.getValue() == null) {
+            mostrarAlerta("Por favor selecciona la fecha de vencimiento.");
+            DateVencimiento.requestFocus();
+            return;
+        }
+
+        Alert confirmacion = new Alert(Alert.AlertType.INFORMATION);
+        confirmacion.setTitle("Pago exitoso");
+        confirmacion.setHeaderText("¡Gracias por tu compra!");
+        confirmacion.setContentText("Su pago ha sido exitoso y su pedido está en camino.");
+        confirmacion.showAndWait();
+
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Pago confirmado");
+        alerta.setContentText("Compra completada exitosamente y producto agregado al historial.");
+        alerta.showAndWait();
+
+        try {
+            // Obtener productos del carrito
+            ObservableList<Producto> productosCarrito = FXCollections.observableArrayList(GestorCarrito.obtenerProductos());
+
+            // Agregar cada producto al historial
+            for (Producto p : productosCarrito) {
+                GestorHistorial.agregarAlHistorial(p);
+            }
+
+            // Limpiar el carrito
+            GestorCarrito.limpiarCarrito();
+
+            // Cargar vista de historial
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Historial.fxml"));
+            Parent root = loader.load();
+            Stage stage = Main.getStage();
+            stage.setScene(new Scene(root));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostrarAlerta(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        alerta.setTitle("Campo obligatorio");
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // Configuración inicial si se requiere
+    }
+}
 
  
     

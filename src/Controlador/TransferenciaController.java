@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Modelo.Producto;
 import Modelo.GestorCarrito;
 import Modelo.GestorHistorial;
 import Modelo.MenuGestor;
@@ -53,10 +54,14 @@ Button btnPago;
 @FXML
 public void PagoAction(ActionEvent event) {
     // Obtener los productos del carrito
-    ObservableList<Producto> productosCarrito = FXCollections.observableArrayList(GestorCarrito.obtenerCarrito());
+    ObservableList<Producto> productosCarrito = FXCollections.observableArrayList(GestorCarrito.obtenerProductos());
 
-    // Agregar al historial y limpiar carrito (Paso 2)
-    GestorHistorial.agregarListaAlHistorial(productosCarrito);
+    // Agregar cada producto al historial
+    for (Producto p : productosCarrito) {
+        GestorHistorial.agregarAlHistorial(p);
+    }
+
+    // Limpiar carrito
     GestorCarrito.limpiarCarrito();
 
     // Mostrar mensaje de confirmación
@@ -74,14 +79,12 @@ public void PagoAction(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Historial.fxml"));
         Parent root = loader.load();
 
-        // Cambiar de escena
-        Stage stage = Main.getStage(); // o ((Node)event.getSource()).getScene().getWindow()
+        Stage stage = Main.getStage();
         stage.setScene(new Scene(root));
 
     } catch (IOException e) {
         e.printStackTrace();
     }
-
 }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

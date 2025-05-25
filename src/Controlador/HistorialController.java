@@ -1,11 +1,13 @@
 package Controlador;
 
-import Modelo.GestorCarrito;
-import Modelo.GestorHistorial;
+import Modelo.Producto;
 import Modelo.MenuGestor;
+import Modelo.GestorHistorial;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,10 +18,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class HistorialController implements Initializable {
+
+    @FXML
+    private Button btnHome, btnMenu;
 
     @FXML
     private TableView<Producto> tablaResumen;
@@ -36,44 +40,33 @@ public class HistorialController implements Initializable {
     @FXML
     private TableColumn<Producto, String> colcategoria;
 
-    @FXML
-    private Button BtnHome;
-
-    @FXML
-    private Button btnMenu;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tablaResumen.setItems(GestorHistorial.obtenerHistorial());
+        colNombre.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("nombre"));
+        colDescripcion.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("descripcion"));
+        colPrecio.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("precio"));
+        colcategoria.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("categoria"));
 
-        // Asegurarse de enlazar las columnas con las propiedades del Producto
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        colDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        colcategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        tablaResumen.setItems(GestorHistorial.obtenerHistorial());
+        cargarDatos();
     }
 
-    public void agregarProductosAlHistorial(ObservableList<Producto> productos) {
-        if (tablaResumen != null && productos != null) {
-            tablaResumen.getItems().addAll(productos);
-        }
+    private void cargarDatos() {
+        List<Producto> lista = GestorHistorial.obtenerHistorial();
+        ObservableList<Producto> obsLista = FXCollections.observableArrayList(lista);
+        tablaResumen.setItems(obsLista);
     }
 
     @FXML
-    public void HomeAction(ActionEvent event) throws IOException {
+    private void HomeAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
         Parent root = loader.load();
-
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
         currentStage.setTitle("Productos");
     }
 
     @FXML
-    public void MenuAction(ActionEvent event) {
+    private void MenuAction(ActionEvent event) {
         MenuGestor.mostrarMenu();
     }
 }
-   
-    

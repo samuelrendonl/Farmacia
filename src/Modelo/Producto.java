@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador;
+package Modelo;
+
+import java.util.Objects;
 
 /**
  *
@@ -36,5 +38,16 @@ public class Producto {
     public String getCategoria() { return categoria; }
     public void setCategoria(String categoria) { this.categoria = categoria; }
 
+@Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Producto)) return false;
+    Producto p = (Producto) o;
+    return nombre.equals(p.nombre) && categoria.equals(p.categoria);
+}
 
+@Override
+public int hashCode() {
+    return Objects.hash(nombre, categoria);
+}
 }

@@ -4,12 +4,15 @@
  */
 package Controlador;
 
+import Modelo.Producto;
 import Modelo.MenuGestor;
 import Modelo.GestorCarrito;
 import Modelo.GestorFavoritos;
+import Modelo.GestorHistorial;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,80 +31,62 @@ import javafx.stage.Stage;
 public class VitaEController implements Initializable {
 
 
+@FXML Button BtnHome, btnMenu, btnAggFavoritos, btnAggCarrito;
+
     @FXML
-Button BtnHome;
-
-@FXML
-public void HomeAction(ActionEvent event) throws IOException{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
-    Parent root = loader.load();
-    Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-    currentStage.setScene(new Scene(root));
-    currentStage.setTitle("Productos 2");  
-}
-
-@FXML
-Button btnMenu;
-
-@FXML
-public void MenuAction(ActionEvent event){
-MenuGestor.mostrarMenu();    
-}
-@FXML
-Button btnAggFavoritos;
-
-@FXML
-private void AggFavoritosAction(ActionEvent event) {
-    Producto producto = new Producto("Vita E ", "Caja x30 Capsulas Blandas de Vitamina E", 15.000, "Tableta");
-    GestorFavoritos.agregarAFavoritos(producto);
-
-    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-    alerta.setTitle("Confirmación");
-    alerta.setContentText("Producto agregado a favoritos.");
-    alerta.showAndWait();
-
-    // Cambia a la vista de favoritos
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ListaFavoritos.fxml"));
+    public void HomeAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
         Parent root = loader.load();
-        Stage stage = Main.getStage(); // o como obtienes el stage principal
-        stage.setScene(new Scene(root));
-    } catch (IOException e) {
-        e.printStackTrace();
+        Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(new Scene(root));
+        currentStage.setTitle("Productos 2");
     }
-}
-@FXML
-Button btnAggCarrito;
 
-@FXML
-public void AggCarritoAction(ActionEvent event) {
-    Producto producto = new Producto("Vita E ", "Caja x30 Capsulas Blandas de Vitamina E", 15.000, "Tableta");
-    GestorCarrito.agregarAlCarrito(producto);
-
-    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-    alerta.setTitle("Confirmación");
-    alerta.setContentText("Producto agregado al carrito.");
-    alerta.showAndWait();
-
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Carrito.fxml"));
-        Parent root = loader.load();
-        Stage stage = Main.getStage();
-        stage.setScene(new Scene(root));
-    } catch (IOException e) {
-        e.printStackTrace();
+    @FXML
+    public void MenuAction(ActionEvent event) {
+        MenuGestor.mostrarMenu();
     }
-}
-@FXML
-Button btnComprar;
 
-@FXML
-public void ComprarAction(ActionEvent event){
-    
-}
+    @FXML
+    public void AggFavoritosAction(ActionEvent event) {
+        Producto producto = new Producto("Vita E", "Caja x30 Capsulas Blandas de Vitamina E", 15_000, "Tableta");
+        GestorFavoritos.agregarAFavoritos(producto);
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Confirmación");
+        alerta.setContentText("Producto agregado a favoritos");
+        alerta.showAndWait();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ListaFavoritos.fxml"));
+            Parent root = loader.load();
+            Stage stage = Main.getStage();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void AggCarritoAction(ActionEvent event) {
+        Producto producto = new Producto("Vita E", "Caja x30 Capsulas Blandas de Vitamina E", 15_000, "Tableta");
+        GestorCarrito.agregarAlCarrito(producto);
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Confirmación");
+        alerta.setContentText("Producto agregado al carrito.");
+        alerta.showAndWait();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Carrito.fxml"));
+            Parent root = loader.load();
+            Stage stage = Main.getStage();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+           @FXML
+    public void ComprarAction(ActionEvent event){
+        
+    }
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    public void initialize(URL url, ResourceBundle rb) {}
 }

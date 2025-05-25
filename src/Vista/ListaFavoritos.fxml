@@ -24,5 +24,7 @@
             <TableColumn fx:id="colCategoria" prefWidth="150.0" text="Categoría" />
         </columns>
       </TableView>
+      <Button fx:id="btnEliminarFavorito" layoutX="105.0" layoutY="722.0" mnemonicParsing="false" onAction="#eliminarFavoritoSeleccionadoAction" prefHeight="41.0" prefWidth="135.0" style="-fx-background-color: #145DA0; -fx-cursor: hand;" text="Eliminar seleccionado" textFill="WHITE" />
+      <Button fx:id="btnLimpiarFavoritos" layoutX="254.0" layoutY="722.0" mnemonicParsing="false" onAction="#limpiarFavoritosAction" prefHeight="41.0" prefWidth="150.0" style="-fx-background-color: #145DA0; -fx-cursor: hand;" text="Vaciar Lista De Favoritos" textFill="WHITE" />
    </children>
 </AnchorPane>

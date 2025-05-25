@@ -4,24 +4,23 @@
  */
 package Modelo;
 
-import Controlador.Producto;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.List;
 
-/**
- *
- * @author samue
- */
 public class GestorHistorial {
-    private static ObservableList<Producto> historial = FXCollections.observableArrayList();
 
-    public static void agregarListaAlHistorial(ObservableList<Producto> productos) {
-        if (productos != null && !productos.isEmpty()) {
-            historial.addAll(productos);
-        }
+    private static ListaSimple<Producto> historial = new ListaSimple<>();
+
+    // Agrega una compra al historial
+    public static void agregarAlHistorial(Producto producto) {
+        historial.agregar(producto);
     }
 
-    public static ObservableList<Producto> obtenerHistorial() {
-        return historial;
+    // No suele eliminarse historial, pero puedes agregar si quieres
+    public static void limpiarHistorial() {
+        historial = new ListaSimple<>();
+    }
+
+    public static List<Producto> obtenerHistorial() {
+        return historial.toList();
     }
 }
