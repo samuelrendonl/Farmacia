@@ -39,15 +39,20 @@ public class Producto {
     public void setCategoria(String categoria) { this.categoria = categoria; }
 
 @Override
-public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Producto)) return false;
-    Producto p = (Producto) o;
-    return nombre.equals(p.nombre) && categoria.equals(p.categoria);
+public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+    Producto producto = (Producto) obj;
+    return nombre != null && nombre.equals(producto.nombre);
 }
 
 @Override
 public int hashCode() {
-    return Objects.hash(nombre, categoria);
+    return nombre != null ? nombre.hashCode() : 0;
 }
+
+    @Override
+    public String toString() {
+        return nombre; // Importante para ComboBox
+    }
 }

@@ -20,19 +20,19 @@ public class MapaProductoAVista {
         mapa.put("Acetaminofén 150mg", "/Vista/AcetaminofenJar.fxml");
         mapa.put("Hioscina 10mg", "/Vista/Hioscina.fxml");
         mapa.put("Diclofenaco Gel al 1%", "/Vista/Diclofenaco.fxml");
-        mapa.put("Vita E", "/Vista/VitaE.fxml");
         mapa.put("Vita C", "/Vista/VitaC.fxml");
+        mapa.put("Vita E", "/Vista/VitaE.fxml");
         mapa.put("Ibuprofeno 800mg", "/Vista/Ibuprofeno.fxml");
         mapa.put("Clotrimazol Crema", "/Vista/Clotrimazol.fxml");
     }
 
-    // Método para obtener la ruta del archivo FXML a partir del nombre del producto
     public static String obtenerRutaVista(String nombreProducto) {
         return mapa.get(nombreProducto);
     }
 
-    // Método para verificar si existe una ruta para un producto
     public static boolean contieneProducto(String nombreProducto) {
         return mapa.containsKey(nombreProducto);
     }
 }
+
+

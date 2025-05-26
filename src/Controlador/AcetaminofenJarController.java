@@ -70,7 +70,7 @@ public void AggFavoritosAction(ActionEvent event) {
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Acetaminofén 150mg", "Frasco x60mL de Acetaminofén Jarabe", 3_000, "Jarabe");
+        Producto producto = new Producto("Acetaminofén 150mg", "Frasco x60mL de Acetaminofén Jarabe", 3000, "Jarabe");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");

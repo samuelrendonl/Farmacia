@@ -69,7 +69,7 @@ public void AggFavoritosAction(ActionEvent event) {
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Diclofenaco Gel al 1%", "Gel Diclofenaco al 1% Uso tópico 50g", 8_000, "Crema");
+        Producto producto = new Producto("Diclofenaco Gel al 1%", "Gel Diclofenaco al 1% Uso tópico 50g", 8000, "Crema");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");

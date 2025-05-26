@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.CarritoController">
    <children>
@@ -27,9 +28,16 @@
             <TableColumn fx:id="colTipo" prefWidth="126.0" text="Tipo" />
         </columns>
       </TableView>
-      <Label fx:id="lblTotal" layoutX="963.0" layoutY="560.0" prefHeight="17.0" prefWidth="203.0" />
+      <Label fx:id="lblTotalPrecio" layoutX="959.0" layoutY="553.0" prefHeight="17.0" prefWidth="203.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
       <Button fx:id="btnEliminar" layoutX="102.0" layoutY="708.0" mnemonicParsing="false" onAction="#eliminarSeleccionadoAction" prefHeight="41.0" prefWidth="135.0" style="-fx-background-color: #145DA0; -fx-cursor: hand;" text="Eliminar Producto" textFill="WHITE" />
       <Button fx:id="btnLimpiarCarrito" layoutX="247.0" layoutY="708.0" mnemonicParsing="false" onAction="#limpiarCarritoAction" prefHeight="41.0" prefWidth="135.0" style="-fx-background-color: #145DA0; -fx-cursor: hand;" text="Limpiar Carrito" textFill="WHITE" />
       <ComboBox fx:id="comboBuscar" layoutX="172.0" layoutY="13.0" prefHeight="51.0" prefWidth="625.0" promptText="Buscar..." />
+      <Label fx:id="lblCantidadProductos" layoutX="1021.0" layoutY="533.0" prefHeight="17.0" prefWidth="152.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
    </children>
 </AnchorPane>

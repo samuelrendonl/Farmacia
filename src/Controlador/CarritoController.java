@@ -24,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -32,6 +33,12 @@ public class CarritoController implements Initializable {
 
     @FXML
     private Button btnHome, btnMenu, btnComprarC, btnEliminar, btnLimpiarCarrito;
+    @FXML
+    private Label lblTotalPrecio;   
+
+    @FXML
+    private Label lblCantidadProductos; 
+
 
     @FXML
     private TableView<Producto> tablaCarrito;
@@ -54,16 +61,16 @@ public class CarritoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Configuración columnas
         colNombre.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("nombre"));
         colDescripcion.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("descripcion"));
         colPrecio.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("precio"));
-        colTipo.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("categoria")); // o "tipo" si usas otra propiedad
+        colTipo.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("categoria")); 
+
         cargarDatos();
 
-        // Cargar todos los productos
+        // Cargar productos para búsqueda
         ProductoRepositorio.obtenerProductos().forEach(listaDobleProductos::agregarAlFinal);
-
-        // Configurar búsqueda global y redirección
         BusquedaGlobal.configurarBusquedaGlobal(comboBuscar, listaDobleProductos);
     }
 
@@ -71,8 +78,17 @@ public class CarritoController implements Initializable {
         List<Producto> lista = GestorCarrito.obtenerProductos();
         ObservableList<Producto> obsLista = FXCollections.observableArrayList(lista);
         tablaCarrito.setItems(obsLista);
-    }
 
+        actualizarLabels(lista);
+    }
+    private void actualizarLabels(List<Producto> lista) {
+        double total = 0;
+        for (Producto p : lista) {
+            total += p.getPrecio();
+        }
+        lblTotalPrecio.setText(String.format(" $%.2f", total));
+        lblCantidadProductos.setText("" + lista.size());
+    }
     @FXML
     private void HomeAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
@@ -92,7 +108,8 @@ public class CarritoController implements Initializable {
         Producto seleccionado = tablaCarrito.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
             tablaCarrito.getItems().remove(seleccionado);
-            GestorCarrito.eliminarProducto(seleccionado);  // Debes implementar este método si quieres eliminar específico
+            GestorCarrito.eliminarProducto(seleccionado); // Implementar este método en GestorCarrito
+            actualizarLabels(tablaCarrito.getItems());
         }
     }
 
@@ -100,11 +117,20 @@ public class CarritoController implements Initializable {
     private void limpiarCarritoAction(ActionEvent event) {
         tablaCarrito.getItems().clear();
         GestorCarrito.limpiarCarrito();
+        actualizarLabels(tablaCarrito.getItems());
     }
 
     @FXML
     private void ComprarCAction(ActionEvent event) {
-        // Aquí implementar acción de compra desde el carrito si quieres
+                try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/InformacionCompra.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) btnComprarC.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Información de Compra");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

@@ -37,11 +37,11 @@ public class SulfatoferrosojarController implements Initializable {
 
     @FXML
     public void HomeAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
         Parent root = loader.load();
         Stage currentStage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Productos 2");
+        currentStage.setTitle("Productos");
     }
 
     @FXML
@@ -70,7 +70,7 @@ public void AggFavoritosAction(ActionEvent event) {
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Sulfato Ferroso Jarabe", "Frasco Jarabe Sulfato Ferroso 120ml ", 5.000, "Jarabe");
+        Producto producto = new Producto("Sulfato Ferroso Jarabe", "Frasco Jarabe Sulfato Ferroso 120ml ", 5000, "Jarabe");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");

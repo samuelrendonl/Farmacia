@@ -28,8 +28,8 @@ public class ProductoRepositorio {
         productos.add(new Producto("Acetaminofén 150mg", "Frasco x60mL de Acetaminofén Jarabe", 3.000, "Jarabe"));
         productos.add(new Producto("Hioscina 10mg", "Caja x20 Tabletas Buscapina 10mg", 5.000 , "Tableta"));
         productos.add(new Producto("Diclofenaco Gel al 1%", "Gel Diclofenaco al 1% Uso tópico 50g", 8.000, "Crema"));
-        productos.add(new Producto("Vita E ", "Caja x30 Capsulas Blandas de Vitamina E", 15.000, "Tableta"));
-        productos.add(new Producto("Vita C ", "Caja x100 Tabletas Masticables de Vitamina C", 22.000, "Tableta"));
+        productos.add(new Producto("Vita C", "Caja x100 Tabletas Masticables de Vitamina C", 22000, "Tableta"));
+        productos.add(new Producto("Vita E", "Caja x30 Capsulas Blandas de Vitamina E", 15000, "Tableta"));
         productos.add(new Producto("Ibuprofeno 800mg", "Caja x60 Tabletas  de Ibuprofeno 800mg", 12.000, "Tableta"));
         productos.add(new Producto("Clotrimazol Crema", "Crema Vaginal Clotrimazol 1% 40g", 14.000, "Crema"));
 

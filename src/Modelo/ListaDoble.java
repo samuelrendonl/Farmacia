@@ -38,14 +38,14 @@ public class ListaDoble<T> {
         return lista;
     }
 
- 
     public List<T> buscarPorNombreParcial(String texto) {
         List<T> resultado = new ArrayList<>();
         Nodo<T> actual = cabeza;
         while (actual != null) {
             if (actual.valor instanceof Producto) {
                 Producto p = (Producto) actual.valor;
-                if (p.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+                if (p.getNombre() != null &&
+                    p.getNombre().toLowerCase().trim().contains(texto.toLowerCase().trim())) {
                     resultado.add(actual.valor);
                 }
             }
@@ -53,8 +53,8 @@ public class ListaDoble<T> {
         }
         return resultado;
     }
-
-    public String imprimirDesdeInicio() {
+    
+ public String imprimirDesdeInicio() {
     StringBuilder sb = new StringBuilder();
     Nodo<T> actual = cabeza;
     while (actual != null) {
@@ -64,9 +64,5 @@ public class ListaDoble<T> {
     sb.append("null");
     return sb.toString();
 }
-    
-    public boolean estaVacia() {
-        return cabeza == null;
-    }
-}
 
+}

@@ -104,7 +104,7 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-                        currentStage.setTitle("VitaE");
+                        currentStage.setTitle("Vita E");
 
         
     }
@@ -117,7 +117,7 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-                        currentStage.setTitle("VItaC");
+                        currentStage.setTitle("Vita C");
 
         
     }

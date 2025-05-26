@@ -95,13 +95,13 @@ public class ListaFavoritosController implements Initializable {
         MenuGestor.mostrarMenu();
     }
 
-    @FXML
-    private void eliminarFavoritoSeleccionadoAction(ActionEvent event) {
-    if (!tablaFavoritos.getItems().isEmpty()) {
-        tablaFavoritos.getItems().remove(0);  // elimina el primero en la tabla
-        GestorFavoritos.eliminarPrimerFavorito();
+public void eliminarFavoritoSeleccionadoAction(ActionEvent event) {
+    Producto seleccionado = tablaFavoritos.getSelectionModel().getSelectedItem();
+    if (seleccionado != null) {
+        tablaFavoritos.getItems().remove(seleccionado);
+        GestorFavoritos.eliminarFavorito(seleccionado);
     }
-} 
+}
 
     @FXML
     private void limpiarFavoritosAction(ActionEvent event) {

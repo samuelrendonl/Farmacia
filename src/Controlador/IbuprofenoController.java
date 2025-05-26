@@ -69,7 +69,7 @@ public void AggFavoritosAction(ActionEvent event) {
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Ibuprofeno 800mg", "Caja x60 Tabletas  de Ibuprofeno 800mg", 12_000, "Tableta");
+        Producto producto = new Producto("Ibuprofeno 800mg", "Caja x60 Tabletas  de Ibuprofeno 800mg", 12000, "Tableta");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");

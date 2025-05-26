@@ -37,11 +37,11 @@ public class NaproxenoController implements Initializable {
 
     @FXML
     public void HomeAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
         Parent root = loader.load();
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Productos 2");
+        currentStage.setTitle("Productos");
     }
 
     @FXML
@@ -70,7 +70,7 @@ public void AggFavoritosAction(ActionEvent event) {
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Naproxeno 500mg", "Caja x10 Tabletas", 8_000, "Tableta");
+        Producto producto = new Producto("Naproxeno 500mg", "Caja x10 Tabletas", 8000, "Tableta");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");

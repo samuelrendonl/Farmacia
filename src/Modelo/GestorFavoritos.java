@@ -22,10 +22,10 @@ public class GestorFavoritos {
     public static List<Producto> obtenerFavoritos() {
         return favoritos.toList();
     }
-    public static void eliminarFavorito(Producto producto) {
+public static void eliminarFavorito(Producto producto) {
     List<Producto> lista = favoritos.toList();
-    lista.remove(producto);  // elimina el producto seleccionado
-    favoritos = new Cola<>();
+    lista.removeIf(p -> p.equals(producto));
+    favoritos = new Cola<>();  // Aquí mantén Cola, no ListaDoble
     for (Producto p : lista) {
         favoritos.encolar(p);
     }

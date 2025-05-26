@@ -37,11 +37,11 @@ public class BetametasonaController implements Initializable {
 
     @FXML
     public void HomeAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
         Parent root = loader.load();
         Stage currentStage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Productos 2");
+        currentStage.setTitle("Productos");
     }
 
     @FXML
@@ -70,7 +70,7 @@ public void AggFavoritosAction(ActionEvent event) {
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Betametasona Crema al 0.05%", "Crema Betametasona al 0.05% 20g", 9.000, "Crema");
+        Producto producto = new Producto("Betametasona Crema al 0.05%", "Crema Betametasona al 0.05% 20g", 9000, "Crema");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");

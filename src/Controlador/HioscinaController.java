@@ -71,7 +71,7 @@ public void AggFavoritosAction(ActionEvent event) {
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Hioscina 10mg", "Caja x20 Tabletas Buscapina 10mg", 5_000, "Tableta");
+        Producto producto = new Producto("Hioscina 10mg", "Caja x20 Tabletas Buscapina 10mg", 5000, "Tableta");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");

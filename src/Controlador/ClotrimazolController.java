@@ -69,7 +69,7 @@ public void AggFavoritosAction(ActionEvent event) {
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Clotrimazol Crema", "Crema Vaginal Clotrimazol 1% 40g", 14_000, "Crema");
+        Producto producto = new Producto("Clotrimazol Crema", "Crema Vaginal Clotrimazol 1% 40g", 14000, "Crema");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");

@@ -63,7 +63,7 @@ public void AggFavoritosAction(ActionEvent event) {
 }
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Acetaminofén 500 mg", "Caja x100 tabletas Via Oral", 9_000, "Tableta");
+        Producto producto = new Producto("Acetaminofén 500 mg", "Caja x100 tabletas Via Oral", 9000, "Tableta");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");

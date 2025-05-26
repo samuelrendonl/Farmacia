@@ -37,11 +37,11 @@ public class SulfatoferrosoController implements Initializable {
 
     @FXML
     public void HomeAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Productos.fxml"));
         Parent root = loader.load();
         Stage currentStage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Productos 2");
+        currentStage.setTitle("Productos");
     }
 
     @FXML
@@ -51,7 +51,7 @@ public class SulfatoferrosoController implements Initializable {
 
     @FXML
     public void AggFavoritosAction(ActionEvent event) {
-        Producto producto = new Producto("Sulfato Ferroso 200mg", "Caja x250 Grageas Sulfato Ferroso 200mg", 28.000, "Tableta");
+        Producto producto = new Producto("Sulfato Ferroso 200mg", "Caja x250 Grageas Sulfato Ferroso 200mg", 28000, "Tableta");
         GestorFavoritos.agregarAFavoritos(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");
@@ -69,7 +69,7 @@ public class SulfatoferrosoController implements Initializable {
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
-        Producto producto = new Producto("Sulfato Ferroso 200mg", "Caja x250 Grageas Sulfato Ferroso 200mg", 28.000, "Tableta");
+        Producto producto = new Producto("Sulfato Ferroso 200mg", "Caja x250 Grageas Sulfato Ferroso 200mg", 28000, "Tableta");
         GestorCarrito.agregarAlCarrito(producto);
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Confirmación");
