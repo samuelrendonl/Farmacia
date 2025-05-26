@@ -1,18 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
-/**
- *
- * @author samue
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListaDoble<T> {
     private static class Nodo<T> {
         T valor;
-        Nodo<T> anterior;
         Nodo<T> siguiente;
+        Nodo<T> anterior;
 
         Nodo(T valor) {
             this.valor = valor;
@@ -20,29 +15,58 @@ public class ListaDoble<T> {
     }
 
     private Nodo<T> cabeza;
+    private Nodo<T> cola;
 
-    public void agregar(T valor) {
+    public void agregarAlFinal(T valor) {
         Nodo<T> nuevo = new Nodo<>(valor);
-        if (cabeza == null) {
-            cabeza = nuevo;
+        if (cola == null) {
+            cabeza = cola = nuevo;
         } else {
-            Nodo<T> actual = cabeza;
-            while (actual.siguiente != null) {
-                actual = actual.siguiente;
-            }
-            actual.siguiente = nuevo;
-            nuevo.anterior = actual;
+            cola.siguiente = nuevo;
+            nuevo.anterior = cola;
+            cola = nuevo;
         }
+    }
+
+    public List<T> toList() {
+        List<T> lista = new ArrayList<>();
+        Nodo<T> actual = cabeza;
+        while (actual != null) {
+            lista.add(actual.valor);
+            actual = actual.siguiente;
+        }
+        return lista;
+    }
+
+ 
+    public List<T> buscarPorNombreParcial(String texto) {
+        List<T> resultado = new ArrayList<>();
+        Nodo<T> actual = cabeza;
+        while (actual != null) {
+            if (actual.valor instanceof Producto) {
+                Producto p = (Producto) actual.valor;
+                if (p.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+                    resultado.add(actual.valor);
+                }
+            }
+            actual = actual.siguiente;
+        }
+        return resultado;
     }
 
     public String imprimirDesdeInicio() {
-        StringBuilder sb = new StringBuilder();
-        Nodo<T> actual = cabeza;
-        while (actual != null) {
-            sb.append(actual.valor).append(" <-> ");
-            actual = actual.siguiente;
-        }
-        sb.append("null");
-        return sb.toString();
+    StringBuilder sb = new StringBuilder();
+    Nodo<T> actual = cabeza;
+    while (actual != null) {
+        sb.append(actual.valor.toString()).append(" -> ");
+        actual = actual.siguiente;
+    }
+    sb.append("null");
+    return sb.toString();
+}
+    
+    public boolean estaVacia() {
+        return cabeza == null;
     }
 }
+

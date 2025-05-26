@@ -4,10 +4,13 @@
  */
 package Controlador;
 
+import Modelo.BusquedaGlobal;
 import Modelo.Producto;
 import Modelo.MenuGestor;
 import Modelo.GestorCarrito;
 import Modelo.GestorFavoritos;
+import Modelo.ListaDoble;
+import Modelo.ProductoRepositorio;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 /**
@@ -37,6 +41,7 @@ public class AdrenalinaController implements Initializable {
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
         currentStage.setTitle("Productos 2");
+        
     }
 
     @FXML
@@ -44,23 +49,24 @@ public class AdrenalinaController implements Initializable {
         MenuGestor.mostrarMenu();
     }
 
-    @FXML
-    public void AggFavoritosAction(ActionEvent event) {
-        Producto producto = new Producto("Adrenalina", "Caja x25 Ampollas", 33_000, "Ampolla");
-        GestorFavoritos.agregarAFavoritos(producto);
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle("Confirmación");
-        alerta.setContentText("Producto agregado a favoritos");
-        alerta.showAndWait();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ListaFavoritos.fxml"));
-            Parent root = loader.load();
-            Stage stage = Main.getStage();
-            stage.setScene(new Scene(root));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+@FXML
+public void AggFavoritosAction(ActionEvent event) {
+    Producto producto = new Producto("Adrenalina", "Caja x25 Ampollas", 33000, "Ampolla");
+    GestorFavoritos.agregarAFavoritos(producto);
+    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+    alerta.setTitle("Confirmación");
+    alerta.setContentText("Producto agregado a favoritos");
+    alerta.showAndWait();
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ListaFavoritos.fxml"));
+        Parent root = loader.load();
+        Stage stage = Main.getStage();
+        stage.setScene(new Scene(root));
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
+
 
     @FXML
     public void AggCarritoAction(ActionEvent event) {
@@ -84,7 +90,17 @@ public class AdrenalinaController implements Initializable {
     public void ComprarAction(ActionEvent event){
         
     }
+    @FXML
+    private ComboBox<String> comboBuscar;
+
+    private ListaDoble<Producto> listaDobleProductos = new ListaDoble<>();
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {}
+    public void initialize(URL location, ResourceBundle resources) {
+        // Cargar todos los productos
+        ProductoRepositorio.obtenerProductos().forEach(listaDobleProductos::agregarAlFinal);
+
+        // Configurar búsqueda global y redirección
+        BusquedaGlobal.configurarBusquedaGlobal(comboBuscar, listaDobleProductos);
+    }
 }

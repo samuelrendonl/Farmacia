@@ -10,7 +10,6 @@ package Modelo;
  */
 public class GestorDeListas<T> {
     private ListaSimple<T> listaSimple = new ListaSimple<>();
-    private ListaCircular<T> listaCircular = new ListaCircular<>();
     private ListaDoble<T> listaDoble = new ListaDoble<>();
 
     // Métodos de acceso
@@ -18,20 +17,12 @@ public class GestorDeListas<T> {
         listaSimple.agregar(valor);
     }
 
-    public void agregarAListaCircular(T valor) {
-        listaCircular.agregar(valor);
-    }
-
     public void agregarAListaDoble(T valor) {
-        listaDoble.agregar(valor);
-    }
+        listaDoble.agregarAlFinal(valor);
+     }
 
     public String imprimirListaSimple() {
         return listaSimple.imprimir();
-    }
-
-    public String imprimirListaCircular() {
-        return listaCircular.imprimir();
     }
 
     public String imprimirListaDoble() {

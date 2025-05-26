@@ -8,6 +8,9 @@ package Modelo;
  *
  * @author samue
  */
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cola<T> {
     private Nodo<T> frente;
     private Nodo<T> fin;
@@ -44,5 +47,15 @@ public class Cola<T> {
 
     public boolean estaVacia() {
         return frente == null;
+    }
+
+    public List<T> toList() {
+        List<T> lista = new ArrayList<>();
+        Nodo<T> actual = frente;
+        while (actual != null) {
+            lista.add(actual.valor);
+            actual = actual.siguiente;
+        }
+        return lista;
     }
 }

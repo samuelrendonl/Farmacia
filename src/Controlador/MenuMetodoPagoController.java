@@ -1,5 +1,9 @@
 package Controlador;
 
+import Modelo.BusquedaGlobal;
+import Modelo.ListaDoble;
+import Modelo.Producto;
+import Modelo.ProductoRepositorio;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
@@ -56,9 +61,11 @@ public void TransefrenciaAction(ActionEvent event) {
     cerrarPopup();
 }
 
+
+
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL location, ResourceBundle resources) {
+
     }    
     
 }

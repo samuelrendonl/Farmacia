@@ -68,7 +68,6 @@ String usuarioIngresado = txtUsuario.getText();
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Productos");
     } else {
         //Credenciales no validas 
         mostrarError("Usuario o contraseña incorrectos. Inténtalo de nuevo.");

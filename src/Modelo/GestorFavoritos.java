@@ -4,23 +4,31 @@ import java.util.List;
 
 public class GestorFavoritos {
 
-    private static ListaSimple<Producto> favoritos = new ListaSimple<>();
+    private static Cola<Producto> favoritos = new Cola<>();
 
     public static void agregarAFavoritos(Producto producto) {
-        if (!favoritos.contiene(producto)) {
-            favoritos.agregar(producto);
-        }
+        favoritos.encolar(producto);
     }
 
-    public static void eliminarFavorito(Producto producto) {
-        favoritos.eliminar(producto);
+    // Método para eliminar el favorito más antiguo (opcional)
+    public static void eliminarPrimerFavorito() {
+        favoritos.desencolar();
     }
 
     public static void limpiarFavoritos() {
-        favoritos = new ListaSimple<>();
+        favoritos = new Cola<>();
     }
 
     public static List<Producto> obtenerFavoritos() {
         return favoritos.toList();
     }
+    public static void eliminarFavorito(Producto producto) {
+    List<Producto> lista = favoritos.toList();
+    lista.remove(producto);  // elimina el producto seleccionado
+    favoritos = new Cola<>();
+    for (Producto p : lista) {
+        favoritos.encolar(p);
+    }
+}
+
 }

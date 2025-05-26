@@ -42,7 +42,7 @@ private void cambiarVista(String fxml, String titulo, ActionEvent e) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/" + fxml));
         Parent root = loader.load();
         Stage stage = Main.getStage(); 
-        stage.setTitle(titulo); // Cambia el título de la ventana
+        stage.setTitle(titulo);
         stage.setScene(new Scene(root));
     } catch (IOException ex) {
         ex.printStackTrace();

@@ -4,9 +4,12 @@
  */
 package Controlador;
 
+import Modelo.BusquedaGlobal;
 import Modelo.Producto;
 import Modelo.MenuGestor;
 import Modelo.GestorFavoritos;
+import Modelo.ListaDoble;
+import Modelo.ProductoRepositorio;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -20,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -50,6 +54,10 @@ public class ListaFavoritosController implements Initializable {
     @FXML
     private Button btnLimpiarFavoritos;
 
+                @FXML
+    private ComboBox<String> comboBuscar;
+
+    private ListaDoble<Producto> listaDobleProductos = new ListaDoble<>();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         colNombre.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("nombre"));
@@ -58,6 +66,14 @@ public class ListaFavoritosController implements Initializable {
         colCategoria.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("categoria"));
 
         cargarDatos();
+                // Cargar todos los productos
+        ProductoRepositorio.obtenerProductos().forEach(listaDobleProductos::agregarAlFinal);
+
+        // Configurar búsqueda global y redirección
+        BusquedaGlobal.configurarBusquedaGlobal(comboBuscar, listaDobleProductos);
+
+        
+        
     }
 
     private void cargarDatos() {
@@ -72,7 +88,6 @@ public class ListaFavoritosController implements Initializable {
         Parent root = loader.load();
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Productos");
     }
 
     @FXML
@@ -82,12 +97,11 @@ public class ListaFavoritosController implements Initializable {
 
     @FXML
     private void eliminarFavoritoSeleccionadoAction(ActionEvent event) {
-        Producto seleccionado = tablaFavoritos.getSelectionModel().getSelectedItem();
-        if (seleccionado != null) {
-            tablaFavoritos.getItems().remove(seleccionado);
-            GestorFavoritos.eliminarFavorito(seleccionado);
-        }
+    if (!tablaFavoritos.getItems().isEmpty()) {
+        tablaFavoritos.getItems().remove(0);  // elimina el primero en la tabla
+        GestorFavoritos.eliminarPrimerFavorito();
     }
+} 
 
     @FXML
     private void limpiarFavoritosAction(ActionEvent event) {

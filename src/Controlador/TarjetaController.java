@@ -5,10 +5,13 @@
 package Controlador;
 
 
+import Modelo.BusquedaGlobal;
 import Modelo.Producto;
 import Modelo.GestorCarrito;
 import Modelo.GestorHistorial;
+import Modelo.ListaDoble;
 import Modelo.MenuGestor;
+import Modelo.ProductoRepositorio;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,6 +38,7 @@ import javafx.scene.Parent;
 import javafx.scene.Parent;
 
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 
 public class TarjetaController implements Initializable {
 
@@ -129,6 +133,8 @@ public class TarjetaController implements Initializable {
             Parent root = loader.load();
             Stage stage = Main.getStage();
             stage.setScene(new Scene(root));
+            stage.setTitle("Historial");
+           
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -142,10 +148,19 @@ public class TarjetaController implements Initializable {
         alerta.showAndWait();
     }
 
+    @FXML
+    private ComboBox<String> comboBuscar;
+
+    private ListaDoble<Producto> listaDobleProductos = new ListaDoble<>();
+
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // Configuración inicial si se requiere
-    }
+    public void initialize(URL location, ResourceBundle resources) {
+        // Cargar todos los productos
+        ProductoRepositorio.obtenerProductos().forEach(listaDobleProductos::agregarAlFinal);
+
+        // Configurar búsqueda global y redirección
+        BusquedaGlobal.configurarBusquedaGlobal(comboBuscar, listaDobleProductos);
+    } 
 }
 
  

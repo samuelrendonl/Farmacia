@@ -4,9 +4,12 @@
  */
 package Controlador;
 
+import Modelo.BusquedaGlobal;
 import Modelo.Producto;
 import Modelo.MenuGestor;
 import Modelo.GestorCarrito;
+import Modelo.ListaDoble;
+import Modelo.ProductoRepositorio;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -20,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -43,6 +47,10 @@ public class CarritoController implements Initializable {
 
     @FXML
     private TableColumn<Producto, String> colTipo;
+        @FXML
+    private ComboBox<String> comboBuscar;
+
+    private ListaDoble<Producto> listaDobleProductos = new ListaDoble<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,8 +58,13 @@ public class CarritoController implements Initializable {
         colDescripcion.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("descripcion"));
         colPrecio.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("precio"));
         colTipo.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("categoria")); // o "tipo" si usas otra propiedad
-
         cargarDatos();
+
+        // Cargar todos los productos
+        ProductoRepositorio.obtenerProductos().forEach(listaDobleProductos::agregarAlFinal);
+
+        // Configurar búsqueda global y redirección
+        BusquedaGlobal.configurarBusquedaGlobal(comboBuscar, listaDobleProductos);
     }
 
     private void cargarDatos() {
@@ -94,3 +107,7 @@ public class CarritoController implements Initializable {
         // Aquí implementar acción de compra desde el carrito si quieres
     }
 }
+
+
+
+

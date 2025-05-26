@@ -1,6 +1,10 @@
 package Controlador;
 
+import Modelo.BusquedaGlobal;
+import Modelo.ListaDoble;
 import Modelo.MenuGestor;
+import Modelo.Producto;
+import Modelo.ProductoRepositorio;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -8,10 +12,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 
@@ -41,7 +45,7 @@ public class ProductosController implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Sulfato Ferroso Tableta");
+        currentStage.setTitle("Sulfato Ferroso Tabletas");
     }
     @FXML
     Button btnSulfaferrojar;
@@ -52,7 +56,7 @@ public class ProductosController implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Sulfato Ferroso Jarabe");
+        currentStage.setTitle("SUlfato Ferroso Jarabe");
    
        }
     @FXML
@@ -64,7 +68,7 @@ public class ProductosController implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Betametasona Crema 0.05%");
+        currentStage.setTitle("Betametasona");
   
 
     }
@@ -77,7 +81,7 @@ public class ProductosController implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Esomeprazol Tableta 40mg ");
+        currentStage.setTitle("Esomeprazol");
 
 
     }
@@ -90,7 +94,7 @@ public class ProductosController implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Metocarbamol 750mg Tableta");
+        currentStage.setTitle("Metocarbamol");
 
     }
     @FXML
@@ -102,7 +106,7 @@ public class ProductosController implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Naproxeno 500mg Tableta");
+        currentStage.setTitle("Naproxeno");
 
 
     }
@@ -115,7 +119,7 @@ public class ProductosController implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Loratadina Jarabe");
+        currentStage.setTitle("Loratdina");
 
 
     }
@@ -129,7 +133,7 @@ public class ProductosController implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Adrenalina Ampolla");
+        currentStage.setTitle("Adrenalina");
     }
     @FXML
     Button btnNextPage; 
@@ -142,22 +146,24 @@ public class ProductosController implements Initializable {
     Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
     currentStage.setScene(new Scene(root));
     currentStage.setTitle("Productos 2");
-  
+   
     }
     
 
-    
+    @FXML
+    private ComboBox<String> comboBuscar;
 
+    private ListaDoble<Producto> listaDobleProductos = new ListaDoble<>();
 
-        @Override
-        public void initialize(URL location, ResourceBundle resources) {
-        }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // Cargar todos los productos
+        ProductoRepositorio.obtenerProductos().forEach(listaDobleProductos::agregarAlFinal);
+
+        // Configurar búsqueda global y redirección
+        BusquedaGlobal.configurarBusquedaGlobal(comboBuscar, listaDobleProductos);
+    }
         
 
         
     }
-    
-    
-    
-    
-

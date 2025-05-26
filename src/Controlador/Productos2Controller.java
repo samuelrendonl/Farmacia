@@ -4,7 +4,11 @@
  */
 package Controlador;
 
+import Modelo.BusquedaGlobal;
+import Modelo.ListaDoble;
 import Modelo.MenuGestor;
+import Modelo.Producto;
+import Modelo.ProductoRepositorio;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 /**
@@ -50,7 +55,7 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Acetaminofen 500mg Tableta");
+        currentStage.setTitle("Acetaminofen");
         
     }
     @FXML
@@ -62,7 +67,7 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Acetaminofen Jarabe");
+                currentStage.setTitle("Acetaminofen Jarabe");
         
     }
     @FXML
@@ -74,7 +79,8 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Buscapina 20mg Tableta");
+        currentStage.setTitle("Hioscina");
+
         
     }
     @FXML
@@ -86,8 +92,8 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Diclofenaco Gel 1% Crema Topica");
-        
+       currentStage.setTitle("Diclofenaco");
+     
     }
     @FXML
     Button btnVitaE;
@@ -98,7 +104,8 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Vitamina E");
+                        currentStage.setTitle("VitaE");
+
         
     }
     @FXML
@@ -110,7 +117,8 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Vitamina C");
+                        currentStage.setTitle("VItaC");
+
         
     }
     @FXML
@@ -122,7 +130,8 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Ibuprofeno 800mg Tableta");
+                        currentStage.setTitle("Ibuprofeno");
+
         
     }
     @FXML
@@ -134,8 +143,8 @@ public class Productos2Controller implements Initializable {
 
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Clotrimazol Crema Vaginal 1%");
-        
+                        currentStage.setTitle("Clotrimazol");
+
     }
     @FXML
     Button btnPreviousPage;
@@ -149,14 +158,24 @@ public class Productos2Controller implements Initializable {
     Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
 
     currentStage.setScene(new Scene(root));
-    currentStage.setTitle("Productos ");
+                    currentStage.setTitle("Productos");
+
     }
     
     
     
+    @FXML
+    private ComboBox<String> comboBuscar;
+
+    private ListaDoble<Producto> listaDobleProductos = new ListaDoble<>();
+
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL location, ResourceBundle resources) {
+        // Cargar todos los productos
+        ProductoRepositorio.obtenerProductos().forEach(listaDobleProductos::agregarAlFinal);
+
+        // Configurar búsqueda global y redirección
+        BusquedaGlobal.configurarBusquedaGlobal(comboBuscar, listaDobleProductos);
     }    
     
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -26,5 +27,6 @@
       </TableView>
       <Button fx:id="btnEliminarFavorito" layoutX="105.0" layoutY="722.0" mnemonicParsing="false" onAction="#eliminarFavoritoSeleccionadoAction" prefHeight="41.0" prefWidth="135.0" style="-fx-background-color: #145DA0; -fx-cursor: hand;" text="Eliminar seleccionado" textFill="WHITE" />
       <Button fx:id="btnLimpiarFavoritos" layoutX="254.0" layoutY="722.0" mnemonicParsing="false" onAction="#limpiarFavoritosAction" prefHeight="41.0" prefWidth="150.0" style="-fx-background-color: #145DA0; -fx-cursor: hand;" text="Vaciar Lista De Favoritos" textFill="WHITE" />
+      <ComboBox fx:id="comboBuscar" layoutX="173.0" layoutY="14.0" prefHeight="47.0" prefWidth="623.0" promptText="Buscar..." />
    </children>
 </AnchorPane>
